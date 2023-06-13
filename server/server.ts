@@ -1,5 +1,6 @@
 import express from 'express'
 import * as Path from 'node:path'
+import todosRoutes from './routes/todos'
 
 const server = express()
 
@@ -11,5 +12,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(Path.resolve(__dirname, '../index.html'))
   })
 }
+
+server.use('/api/v1/todos', todosRoutes)
 
 export default server

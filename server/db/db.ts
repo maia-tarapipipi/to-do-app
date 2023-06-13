@@ -1,9 +1,13 @@
 import connection from './connection'
 
-// export async function getLanguages(db = connection) {
-//   return db('languages').select() as Promise<LanguageDataBackend[]>
-// }
+export async function getList(db = connection) {
+  return await db('todos').select()
+}
 
-// export async function addLanguage(input: LanguageData, db = connection) {
-//   const { description, name } = input
-//   return db('languages').insert({ description, name })
+export async function addTask(toDo: string, db = connection) {
+  return await db('todos').insert({ task: toDo })
+}
+
+export async function deleteTask(id: number, db = connection) {
+  await db('todos').where('id', id).del()
+}
