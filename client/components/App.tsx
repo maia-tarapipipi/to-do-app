@@ -1,5 +1,6 @@
 import { todoDraftSchema } from '../../models/todos'
 import AddTodo from './AddTodo'
+import Footer from './Footer'
 import List from './List'
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
       <section className="main">
         <List />
       </section>
-      <footer className="footer"></footer>
+      <footer className="footer">
+
+      </footer>
     </>
   )
 }

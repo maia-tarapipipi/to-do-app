@@ -1,36 +1,42 @@
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../hooks"
-import { fetchTodos } from "../slices/todos"
+import { cancelTodo, fetchTodos } from "../slices/todos"
 
 
 export default function List() {
   const dispatch = useAppDispatch()
-  // to add the todos slice/state
   const todos = useAppSelector((state) => state.todos)
 
   useEffect(() => {
     dispatch(fetchTodos())
   }, [])
 
+  async function handleClick(id: number) {
+    // todo: a deleteTodo slice/state
+    await dispatch(cancelTodo(id))
+    dispatch(fetchTodos())
 
+  }
 
   return (
     <>
-      <div>
+      <ul className="todo-list">
         {todos.map((todo) => (
-          <div key={todo.id}>
-            {/* <div className="complete button">
-              <button value={todo.completed}>complete</button>
-            </div> */}
-            <div>
-              <p>{todo.task}</p>
+
+
+          <li key={todo.id}>
+            <div className={todo.completed}>
+              <input type="checkbox" className="toggle" />
+              <label>{todo.task}</label>
+              <button className="destroy" onClick={() => handleClick(todo.id)}></button>
             </div>
-            {/* <div className="delete button">
-              <button>delete</button>
-            </div> */}
-          </div>
+
+          </li>
+
+
+
         ))}
-      </div>
+      </ul>
     </>
   )
 }

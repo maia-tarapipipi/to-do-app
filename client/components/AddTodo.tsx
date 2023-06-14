@@ -29,7 +29,8 @@ function AddTodo() {
           value={todo.task}
           onChange={handleChange}
         />
-        <button type="button" onClick={handleSubmit}>Add</button>
+        <button type="button" onClick={handleSubmit} className="add-button"
+          style={{ fontSize: '24px', display: "flex", backgroundColor: "#F8AAC0", width: '50px', height: '30px' }}>Add</button>
       </form>
 
     </>

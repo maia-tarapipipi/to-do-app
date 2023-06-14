@@ -8,7 +8,10 @@ export async function getTodos() {
   return res.body as Todo[]
 }
 
-export function addTodo(todo: TodoDraft) {
-  console.log(todo, 'api')
-  return request.post(url).send(todo)
+export async function addTodo(todo: TodoDraft) {
+  return await request.post(url).send(todo)
+}
+
+export async function deleteTodo(id: number) {
+  return await request.delete(`${url}/${id}`)
 }

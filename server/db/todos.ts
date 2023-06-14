@@ -9,3 +9,7 @@ export async function addTodo(newTodo: TodoDraft, db = connection) {
 
   await db('todos').insert(newTodo)
 }
+
+export async function deleteTodo(id: number, db = connection) {
+  await db('todos').where('id', id).del()
+}

@@ -1,5 +1,5 @@
 import express from 'express'
-import { getTodos, addTodo } from '../db/todos'
+import { getTodos, addTodo, deleteTodo } from '../db/todos'
 import { Todo, TodoDraft, todoDraftSchema } from '../../models/todos'
 
 const route = express.Router()
@@ -20,13 +20,20 @@ route.post('/', async (req, res) => {
     const input = req.body as TodoDraft
     const newTodo = todoDraftSchema.parse(input)
     await addTodo(newTodo)
-    res.sendStatus(201)
+    res.sendStatus(202)
   } catch (error) {
     if (error instanceof Error) {
       res.status(500).json({ error: error.message })
     }
   }
 
+})
+
+
+route.delete('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  await deleteTodo(id)
+  res.sendStatus(203)
 })
 
 
