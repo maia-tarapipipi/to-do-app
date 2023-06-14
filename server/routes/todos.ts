@@ -1,8 +1,8 @@
 import express from 'express'
 import { ToDo, ToDoDraft } from '../../modules/todo'
-const router = express.Router()
 import * as db from '../db/db'
 
+const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     const todos = (await db.getTodos()) as ToDo[]
