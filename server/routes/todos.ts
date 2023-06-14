@@ -6,19 +6,21 @@ const router = express.Router();
 //--- GET REQUESTS ---//
 
 //GET ALL TODOS
-router.get('/', async (req: Request, res: Response) => {
-  try {
-    const todos = await db.getAllTodos();
-    res.json(todos);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to retrieve todos.' });
-  }
-});
+router.get('/', (req, res) => {
+  db.getAllTodos()
+    .then((todos) => {
+      res.json(todos)
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).json({ message: 'error in server' })
+    })
+})
 
 
 
 //GET A TODO GIVEN ITS ID
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/:id', async (req, res) => {
   const todoId = Number(req.params.id);
   try {
     const todo = await db.getTodoById(todoId);
@@ -32,7 +34,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 
 //GET TODOS BASED ON GIVEN PRIORTIY (TRUE OR FALSE)
-router.get('/completed/:isCompleted', async (req: Request, res: Response) => {
+router.get('/completed/:isCompleted', async (req, res) => {
   const isCompleted = req.params.isCompleted === 'true';
   try {
     const todos = await db.getTodosByCompletion(isCompleted);
@@ -47,7 +49,7 @@ router.get('/completed/:isCompleted', async (req: Request, res: Response) => {
 //--- POST REQUESTS ---//
 
 //ADD A NEW TODO
-router.post('/', async (req: Request, res: Response) => {
+router.post('/', async (req, res) => {
   const { todo, priority } = req.body;
   const newTodo = { todo, priority };
 
@@ -65,7 +67,7 @@ router.post('/', async (req: Request, res: Response) => {
 
 
 //UPDATE COMPLETION OF A TODO GIVEN ITS ID
-router.patch('/complete/:id', async (req: Request, res: Response) => {
+router.patch('/complete/:id', async (req, res) => {
   const todoId = Number(req.params.id);
   try {
     await db.completeTodo(todoId);
@@ -76,7 +78,7 @@ router.patch('/complete/:id', async (req: Request, res: Response) => {
 });
 
 //UPDATE A TODO GIVEN ITS ID AND NEW TODO TEXT
-router.patch('/:id', async (req: Request, res: Response) => {
+router.patch('/:id', async (req, res) => {
   const todoId = Number(req.params.id);
   const updatedTodo = { id: todoId, todo: req.body.todo };
 
@@ -89,7 +91,7 @@ router.patch('/:id', async (req: Request, res: Response) => {
 });
 
 //UPDATE PRIORITY OF A TODO GIVEN ITS ID AND A NEW PRIORITY
-router.patch('/priority/:id', async (req: Request, res: Response) => {
+router.patch('/priority/:id', async (req, res) => {
   const todoId = Number(req.params.id);
   const updatedTodoPriority = { id: todoId, priority: req.body.priority };
 
@@ -106,7 +108,7 @@ router.patch('/priority/:id', async (req: Request, res: Response) => {
 //--- DELETE REQUESTS ---//
 
 //DELETE ALL COMPLETED TODOS WHERE IS_COMPLETED IS TRUE
-router.delete('/completed', async (req: Request, res: Response) => {
+router.delete('/completed', async (req, res) => {
   try {
     await db.clearCompletedTodos();
     res.json({ message: 'Completed todos cleared successfully.' });
@@ -116,7 +118,7 @@ router.delete('/completed', async (req: Request, res: Response) => {
 });
 
 //REMOVE A TODO GIVEN ITS ID
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete('/:id', async (req, res) => {
   const todoId = Number(req.params.id);
   try {
     await db.removeTodo(todoId);

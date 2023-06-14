@@ -10,9 +10,10 @@ function App() {
       </header>
       <section className="main">
         <List />
-
       </section>
-      <footer className="footer"></footer>
+      <footer className="footer">
+        
+      </footer>
     </>
   )
 }

@@ -34,7 +34,10 @@ export async function addTodo(newTodo: NewTodo, db = connection) {
 
 // UPDATE COMPLETION OF A TODO GIVEN ITS ID
 export async function completeTodo(todoId: number, db = connection) {
-  return db('todos').where('id', todoId).update({ is_completed: true });
+  const todo = await db('todos').where('id', todoId).first();
+  const updatedValue = !todo.is_completed; // Toggle the value
+
+  return db('todos').where('id', todoId).update({ is_completed: updatedValue });
 }
 
 // UPDATE A TODO GIVEN ITS ID AND NEW TODO TEXT
