@@ -31,8 +31,24 @@ router.post('/', (req, res) => {
 
 router.delete('/', async (req, res) => {
   const { id } = req.body
-  console.log('this is re.paramas.id:', id)
+ 
   db.deleteTodos(id)
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch((err: Error) => {
+      console.error(err)
+      res.status(500).json({ message: 'error in server' })
+    })
+})
+
+router.patch('/', async (req, res) => {
+
+ 
+  const updateTaks = req.body
+ 
+  
+  db.updateTodos( updateTaks)
     .then(() => {
       res.sendStatus(200)
     })

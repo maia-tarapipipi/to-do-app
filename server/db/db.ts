@@ -1,5 +1,5 @@
 import connection from './connection'
-import { Todo, TodoDraft } from '../../models/task'
+import { Todo, TodoDraft } from '../../models/todos'
 
 export async function getTodos(db = connection) {
   return (await db('Todos').select()) as Todo[]
@@ -14,6 +14,6 @@ export function deleteTodos(id: number, db = connection) {
   return db('Todos').where({ id: id }).delete()
 }
 
-export function updateTask(id: number, updateTaks: Todo, db = connection) {
-  return db('Todos').update(updateTaks).where({ id: id })
+export function updateTodos(updateTaks: Todo, db = connection) {
+  return db('Todos').update(updateTaks).where({ id: updateTaks.id })
 }

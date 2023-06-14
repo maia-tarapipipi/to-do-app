@@ -10,15 +10,11 @@ server.use(express.static(path.join(__dirname, 'public')))
 
 server.use('/api/v1/todos', todos)
 
-server.get('*', (req, res) => {
-  res.sendFile(path.join('public', 'index.html'))
-})
-
-// if (process.env.NODE_ENV === 'production') {
-//   server.use('/assets', express.static(path.resolve(__dirname, '../assets')))
-//   server.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, '../index.html'))
-//   })
-// }
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static(path.resolve(__dirname, '../assets')))
+  server.get('*', (req, res) => {
+    res.sendFile(path.join('public', 'index.html'))
+  })
+}
 
 export default server
