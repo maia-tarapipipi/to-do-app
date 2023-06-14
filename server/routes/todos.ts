@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   db.getTodos()
     .then((fetchedTodos: TodoDraft[]) => {
       res.json(fetchedTodos)
+      console.log(fetchedTodos)
     })
     .catch((err) => {
       console.error(err)
@@ -19,9 +20,9 @@ router.get('/', (req, res) => {
 
 //TODO: add post route
 router.post('/', (req, res) => {
-  const { task_details, priority, completed } = req.body as TodoDraft
+  const { taskDetails, priority, completed } = req.body as TodoDraft
 
-  db.addTodos({ task_details, priority, completed })
+  db.addTodos({ taskDetails, priority, completed })
     .then(() => {
       res.sendStatus(201)
     })

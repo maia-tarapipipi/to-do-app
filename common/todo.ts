@@ -1,5 +1,5 @@
 export interface TodoDraft {
-task_details: string
+taskDetails: string
 priority: number
 completed: boolean
 
@@ -7,4 +7,5 @@ completed: boolean
 
 export interface Todo extends TodoDraft {
   id: number
+  
 }

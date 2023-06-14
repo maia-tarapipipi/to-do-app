@@ -1,4 +1,5 @@
 import AddTodo from './AddTodo'
+import Footer from './Footer'
 import TodoList from './TodoList'
 
 function App() {
@@ -7,10 +8,13 @@ function App() {
       <header className="header">
         <h1>todos</h1>
         <AddTodo />
-        <TodoList />
       </header>
-      <section className="main"></section>
-      <footer className="footer"></footer>
+      <section className="main">
+        <TodoList />
+      </section>
+      <footer className="footer">
+        <Footer />
+      </footer>
     </>
   )
 }

@@ -2,12 +2,17 @@ import connection from './connection'
 import { TodoDraft } from '../../common/todo'
 
 export async function getTodos(db = connection) {
-  return await db('todos').select()
+  return await db('todos').select(
+    'id',
+    'task_details as taskDetails',
+    'priority',
+    'completed'
+  )
 }
 
 export function addTodos(todo: TodoDraft, db = connection) {
-  const { task_details, priority, completed } = todo
-  return db('todos').insert({ task_details, priority, completed })
+  const { taskDetails, priority, completed } = todo
+  return db('todos').insert({ task_details: taskDetails, priority, completed })
 }
 
 export function updateTodos(id: number, db = connection) {

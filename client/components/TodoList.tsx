@@ -13,12 +13,14 @@ function TodoList() {
 
   return (
     <>
-      {todos.map((todo) => (
-        <div key={todo.id}>
-          <input type="checkbox"></input>
-          {todo.task_details}
-        </div>
-      ))}
+      {todos.map((todo) =>
+      (
+      <div key={todo.id}>
+        <input type="checkbox"></input>
+        {todo.taskDetails}
+      </div>
+      )
+      )}
     </>
   )
 }
