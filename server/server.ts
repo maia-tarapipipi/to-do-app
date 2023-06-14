@@ -3,7 +3,10 @@ import * as Path from 'node:path'
 
 const server = express()
 
+import todosRoutes from './routes/todos'
+
 server.use(express.json())
+server.use('/api/vi/todos', todosRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   server.use('/assets', express.static(Path.resolve(__dirname, '../assets')))
