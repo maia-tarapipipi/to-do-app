@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { checkboxTodo, deleteTodo, fetchTodos } from '../slices/todos'
+import { checkboxTodo, deleteTodo, fetchTodos, clearCompleted } from '../slices/todos'
 
 function List() {
   const dispatch = useAppDispatch()
@@ -8,6 +8,7 @@ function List() {
 
   const [localTodos, setLocalTodos] = useState(todos)
 
+  const [showing, setShowing] = useState('All')
   
 
   //Making the delete button work.
@@ -26,26 +27,27 @@ function List() {
     dispatch(deleteTodo(id))
   }
 
-  function handleComplete(id : number) {
-
+  function clearCompletedHandler() {
+    dispatch(clearCompleted())
   }
 
   function handleCheck(id: number, event: React.ChangeEvent<HTMLInputElement>) {
-    // setLocalTodos(prevTodos => {
-    //   return prevTodos.map(todo => {
-    //     if (todo.id === id) {
-    //       return {
-    //         ...todo,
-    //         isCompleted: event.target.checked
-    //       };
-    //     }
-    //     return todo;
-    //   });
-    // });
-  
-
     dispatch(checkboxTodo(id))
+  }
+  
+  function showAllHandler() {
+    setLocalTodos(todos)
+    setShowing('All')
+  }
 
+  function showActiveHandler() {
+    setLocalTodos(todos.filter(todo => todo.isCompleted == false))
+    setShowing('Active')
+  }
+
+  function showCompletedHandler() {
+    setLocalTodos(todos.filter(todo => todo.isCompleted == true))
+    setShowing('Completed')
   }
 
   return (
@@ -59,11 +61,12 @@ function List() {
               alignItems: 'center',
               gap: '20px',
               margin: '0 10px',
+              color : element.isCompleted ? 'gray' : 'black',
             }}
             key={element.todo}
           >
             <input type="checkbox" checked = {element.isCompleted} onChange={(event) => handleCheck(element.id, event)}/>
-            <div style={{ width: '250px' }}>
+            <div style={{ width: '250px'}}>
               <h2>{element.todo}</h2>
             </div>
             <p>Priority: {element.priority}</p>
@@ -82,11 +85,17 @@ function List() {
           }}
         >
           <p>Items Left: {todos.length}</p>
-          <button>All</button>
-          <button>Active</button>
-          <button>Completed</button>
-          <button>Clear completed</button>
+          <button onClick={showAllHandler}>All</button>
+          <button onClick={showActiveHandler}>Active</button>
+          <button onClick={showCompletedHandler}>Completed</button>
+          <button onClick={clearCompletedHandler}>Clear completed</button>
+          
         </div>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'}}>
+              <p>Showing: {showing}</p></div>
       </div>
     </>
   )

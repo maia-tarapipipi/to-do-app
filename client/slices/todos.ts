@@ -36,6 +36,14 @@ export const checkboxTodo = createAsyncThunk(
   }
 )
 
+export const clearCompleted = createAsyncThunk(
+  'todos/clearCompleted', async() => {
+    await clearCompletedTodos()
+    const response = await getAllTodos()
+    return response.body
+  }
+)
+
 
 const todosSlice = createSlice({
   name : 'todos',
@@ -47,6 +55,7 @@ const todosSlice = createSlice({
       .addCase(postTodoThenFetch.fulfilled, (state, { payload}) => payload)
       .addCase(deleteTodo.fulfilled, (state, {payload}) => payload)
       .addCase(checkboxTodo.fulfilled, (state, {payload}) => payload)
+      .addCase(clearCompleted.fulfilled, (state, {payload}) => payload)
 })
 
 export default todosSlice.reducer
