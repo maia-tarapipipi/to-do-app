@@ -1,13 +1,16 @@
 import AddTodo from './AddTodo'
+import ToDoList from './ToDoList'
 
 function App() {
   return (
     <>
       <header className="header">
-        <h1>todos</h1>
-        <AddTodo />
       </header>
-      <section className="main"></section>
+      <main className="main">
+        <h1>Trotter`s Todos</h1>
+        <AddTodo />
+        <ToDoList />
+      </main>
       <footer className="footer"></footer>
     </>
   )
