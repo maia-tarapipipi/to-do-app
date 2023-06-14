@@ -1,0 +1,26 @@
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { fetchTodos } from '../slices/todos'
+
+function TodoList() {
+  const dispatch = useAppDispatch()
+  const todos = useAppSelector((state) => state.todos)
+  console.log(todos)
+
+  useEffect(() => {
+    dispatch(fetchTodos())
+  }, [])
+
+  return (
+    <>
+      {todos.map((todo) => (
+        <div key={todo.id}>
+          <input type="checkbox"></input>
+          {todo.task_details}
+        </div>
+      ))}
+    </>
+  )
+}
+
+export default TodoList

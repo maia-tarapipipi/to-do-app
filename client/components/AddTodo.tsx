@@ -1,11 +1,16 @@
-// eslint-disable-next-line no-unused-vars
+import { useAppDispatch } from "../hooks"
+import { fetchTodos } from "../slices/todos"
+
 function AddTodo() {
+
+
   return (
     <>
       <input
         className="new-todo"
         placeholder="What needs to be done?"
         autoFocus={true}
+        // onChange={handleChange}
       />
     </>
   )
