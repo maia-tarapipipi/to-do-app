@@ -5,4 +5,5 @@ export interface TaskDraft {
 export interface Task extends TaskDraft {
   id: number
   completed: boolean
+  priority: number
 }

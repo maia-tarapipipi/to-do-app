@@ -24,9 +24,9 @@ router.post('/', async (req, res) => {
     const {task} = req.body
     console.log(`routes: `,task);
     
-    const response = await db.addTodo({task, completed: true })
+    await db.addTodo({task, completed: false })
     res.sendStatus(201)
-    console.log(response);
+    
     
   } catch (error) {
     if (error instanceof Error) {

@@ -23,7 +23,7 @@ function AddTodo() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form'>
         <input
           type="text"
           onChange={handleChange}          
@@ -32,7 +32,7 @@ function AddTodo() {
           autoFocus={true}
           value={task.task}
         />
-        <button type='submit'></button>
+        
       </form>
     </>
   )

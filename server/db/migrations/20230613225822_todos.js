@@ -4,6 +4,7 @@ exports.up = function(knex) {
     table.increments('id').primary()
     table.string('task')
     table.boolean('completed')
+    table.integer('priority')
   })
 };
 

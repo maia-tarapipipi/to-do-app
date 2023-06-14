@@ -15,17 +15,19 @@ function ToDoList() {
   // }
 
   return (
-    <>
-      <ul>
-        {todos.map((todo) => {
-          return (
-            <li key={todo.id}>
-              {' '}
-              <input type="checkbox" value={`${todo.completed}`} /> {todo.task}{' '}
-            </li>
-          )
-        })}
-      </ul>
+    <><div className="todoList">
+      
+        <ul>
+          {todos.map((todo) => {
+            return (
+              <li key={todo.id}>
+                {todo.priority}
+                <input type="checkbox" checked={false} /> {todo.task}{' '}
+              </li>
+            )
+          })}
+        </ul>
+    </div>
     </>
   )
 }
