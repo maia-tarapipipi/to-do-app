@@ -1,10 +1,19 @@
-import knexFile from './knexfile'
-import knex from 'knex'
+import connection from './connection'
+import { Todo, TodoDraft } from '../../models/task'
 
-type Environment = 'development'
+export async function getTodos(db = connection) {
+  return (await db('Todos').select()) as Todo[]
+}
 
-const environment = (process.env.NODE_ENV || 'development') as Environment
-const config = knexFile[environment]
-const connection = knex(config)
+export function addTodos(task: TodoDraft, db = connection) {
+  const { todo } = task
+  return db('Todos').insert({ todo })
+}
 
-export default connection
+export function deleteTodos(id: number, db = connection) {
+  return db('Todos').where({ id: id }).delete()
+}
+
+export function updateTask(id: number, updateTaks: Todo, db = connection) {
+  return db('Todos').update(updateTaks).where({ id: id })
+}
