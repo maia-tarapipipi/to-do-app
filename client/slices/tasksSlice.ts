@@ -41,16 +41,16 @@ const tasksSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTodos.fulfilled, (state, { payload }) => {
-        return payload;
+        return {...state, payload};
       })
       .addCase(addTaskAndFetch.fulfilled, (state, { payload }) => {
-        return payload;
+        return {...state, payload};
       })
       .addCase(updateTaskAndFetch.fulfilled, (state, { payload }) => {
-        return payload;
+        return {...state, payload};
       })
       .addCase(deleteTaskAndFetch.fulfilled, (state, { payload }) => {
-        return payload;
+        return {...state, payload};
       });
   },
 });
