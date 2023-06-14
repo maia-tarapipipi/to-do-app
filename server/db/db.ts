@@ -1,11 +1,12 @@
 import connection from './connection'
+import { TaskData } from '../../models/Todos'
 
 export async function getList(db = connection) {
-  return await db('todos').select()
+  return db('todos').select()
 }
 
-export async function addTask(toDo: string, db = connection) {
-  return await db('todos').insert({ task: toDo })
+export function addTask(newTask: TaskData, db = connection) {
+  return db('todos').insert(newTask)
 }
 
 export async function deleteTask(id: number, db = connection) {
