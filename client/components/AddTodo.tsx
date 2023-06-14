@@ -1,12 +1,19 @@
 // eslint-disable-next-line no-unused-vars
+import { useAppDispatch } from '../hooks'
+
 function AddTodo() {
+  function handleSubmit() {}
+
   return (
     <>
-      <input
-        className="new-todo"
-        placeholder="What needs to be done?"
-        autoFocus={true}
-      />
+      <form onSubmit={handleSubmit}>
+        <input
+          className="new-todo"
+          placeholder="What needs to be done?"
+          autoFocus={true}
+        />
+        <button type="submit">Submit</button>
+      </form>
     </>
   )
 }

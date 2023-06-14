@@ -1,7 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit'
-
-// import stuff from './stuff'
+import todosList from './todosList'
 
 export default combineReducers({
-  // stuff
+  todosList: todosList,
 })
