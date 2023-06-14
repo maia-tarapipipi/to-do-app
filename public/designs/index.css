@@ -2,6 +2,10 @@ body {
   color: rgb(28, 28, 28);
 }
 
+h1 {
+  font-size: 2em;
+}
+
 .main {
   background-color: whitesmoke;
   display: flex;
@@ -16,7 +20,7 @@ body {
 }
 
 .todoList {
-  
+ margin: 1em;
 }
 
 ul {
@@ -24,6 +28,7 @@ ul {
   margin: 0;
   padding: 0;
   padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 li {

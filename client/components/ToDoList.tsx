@@ -22,11 +22,12 @@ function ToDoList() {
             return (
               <li key={todo.id}>
                 {todo.priority}
-                <input type="checkbox" checked={false} /> {todo.task}{' '}
+                <input type="checkbox" checked={false} /> {todo.task}
               </li>
             )
           })}
         </ul>
+        Priority scale from 0 (lowest) - 10 (highest)
     </div>
     </>
   )
