@@ -2,7 +2,6 @@ import express from 'express'
 const router = express.Router()
 
 import * as db from '../db/db'
-import { Task, TaskDraft } from '../../common/task'
 
 router.get('/', async (req, res) => {
   try {
