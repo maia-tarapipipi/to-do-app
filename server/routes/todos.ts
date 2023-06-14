@@ -7,6 +7,7 @@ const route = express.Router()
 route.get('/', async (req, res) => {
   try {
     const todos = await getTodos()
+    console.log(todos, 'in the server')
     res.json(todos)
   } catch (error) {
     if (error instanceof Error) {
