@@ -10,3 +10,7 @@ export async function getTasks() {
 export async function addTask(taskData: TaskData) {
   return await request.post(rootUrl).send(taskData)
 }
+
+export async function deleteTask(taskId: number) {
+  await request.delete(`${rootUrl}/${taskId}`)
+}

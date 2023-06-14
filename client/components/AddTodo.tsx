@@ -32,7 +32,6 @@ function AddTodo() {
         name="task"
         className="new-todo"
         placeholder="What needs to be done?"
-        autoFocus={true}
         value={input.task}
         onChange={handleInputChange}
       />
