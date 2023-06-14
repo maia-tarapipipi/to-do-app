@@ -41,4 +41,6 @@ route.delete('/:id', async (req, res) => {
   }
 })
 
+// make patch route to update completed todos
+
 export default route
