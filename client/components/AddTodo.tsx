@@ -5,7 +5,7 @@ function AddTodo() {
       <input
         className="new-todo"
         placeholder="What needs to be done?"
-        autoFocus={true}
+       // dont use because accesibility autoFocus={true}
       />
     </>
   )
