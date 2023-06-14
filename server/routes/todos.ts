@@ -18,8 +18,9 @@ route.get('/', async (req, res) => {
 route.post('/', async (req, res) => {
   try {
     const input = req.body
-    const ids = await db.addTask(input)
-    res.json({ id: ids[0], task: input })
+    const [taskId] = await db.addTask(input)
+
+    res.json({ id: taskId })
   } catch (error) {
     if (error instanceof Error) {
       res.status(500).json({ error: error.message })
