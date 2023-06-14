@@ -1,31 +1,39 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { FormEvent, useState } from 'react'
+import { postTaskThenFetch } from '../slices/todos'
+import { useAppDispatch } from '../hooks'
 
+const initialState = { task: '' }
 // eslint-disable-next-line no-unused-vars
 function AddTodo() {
-  const dispatch = useDispatch()
-  const [task, setTask] = useState('')
+  const dispatch = useAppDispatch()
+  const [task, setTask] = useState(initialState)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setTask(e.target.value)
+    e.preventDefault()
+    setTask({ task: e.target.value })
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLInputElement>){
-    const newTask = e.target
-    
-    dispatch(postTask(task))  
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    console.log('I was submitted')
+
+    dispatch(postTaskThenFetch(task))
+    setTask(initialState)
   }
 
   return (
     <>
-      <input
-      onChange={handleChange}
-      onSubmit={handleSubmit}
-        className="new-todo"
-        placeholder="Add a task"
-        autoFocus={true}
-        value={task}
-      />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={handleChange}          
+          className="new-todo"
+          placeholder="Add a task"
+          autoFocus={true}
+          value={task.task}
+        />
+        <button type='submit'></button>
+      </form>
     </>
   )
 }

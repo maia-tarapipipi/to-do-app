@@ -1,7 +1,7 @@
-import connection from "./connection";
+import connection from './connection'
 
 interface TodoDraft {
-  task: string,
+  task: string
   completed: boolean
 }
 
@@ -9,14 +9,15 @@ interface Todo extends TodoDraft {
   id: number
 }
 
-
 //GET todos
-export function getTodos(db = connection) {
-  return db('todos').select()
+export function getTasks(db = connection) {
+  return db('todos').select() as Todo
 }
 
 //POST add todo
 export async function addTodo(todo: TodoDraft, db = connection) {
-  const [id] = await db('todos').insert({...todo})
-  return console.log(id);  
+  console.log(`DB: `,todo);
+  
+  const [id] = await db('todos').insert({ ...todo })
+  return console.log(id)
 }
