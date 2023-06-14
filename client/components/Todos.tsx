@@ -13,8 +13,14 @@ function Todos() {
   return (
     <ul>
       {tasks.map((task) => (
-        <li style={{ fontSize: '20px' }} key={task.id}>
-          {task.task}
+        <li
+          style={{ fontSize: '20px', listStyleType: 'none', padding: '10px' }}
+          key={task.id}
+        >
+          <label style={{ display: 'flex', alignItems: 'center' }}>
+            <input type="checkbox" style={{ marginRight: '10px' }} />
+            <span>{task.task}</span>
+          </label>
         </li>
       ))}
     </ul>
