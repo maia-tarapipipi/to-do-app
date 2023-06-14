@@ -2,9 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import type { ThunkAction as BaseThunkAction } from '@reduxjs/toolkit'
 import type { AnyAction } from '@reduxjs/toolkit'
 
-import reducers from './slices'
+import { rootReducer } from './slices'
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
 export type ThunkAction<T = void> = BaseThunkAction<
   Promise<T>,
@@ -14,7 +13,7 @@ export type ThunkAction<T = void> = BaseThunkAction<
 >
 
 const store = configureStore({
-  reducer: reducers,
+  reducer: rootReducer,
 })
 
 export default store
