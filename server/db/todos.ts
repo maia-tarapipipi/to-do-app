@@ -6,6 +6,6 @@ export async function getTodos(db = connection) {
 }
 
 export async function addTodo(newTodo: TodoDraft, db = connection) {
-  const { task, priority } = newTodo
-  await db('todos').insert({ task, priority })
+
+  await db('todos').insert(newTodo)
 }
