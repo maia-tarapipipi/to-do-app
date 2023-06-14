@@ -11,13 +11,13 @@ function Todos() {
   }, [dispatch])
 
   return (
-    <div>
-      <div>
-        {tasks.map((task) => (
-          <p key={task.id}>{task.task}</p>
-        ))}
-      </div>
-    </div>
+    <ul>
+      {tasks.map((task) => (
+        <li style={{ fontSize: '20px' }} key={task.id}>
+          {task.task}
+        </li>
+      ))}
+    </ul>
   )
 }
 
