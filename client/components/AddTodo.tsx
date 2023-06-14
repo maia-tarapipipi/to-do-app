@@ -1,30 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent, FormEvent } from 'react'
 import { useAppDispatch } from '../hooks'
-import { addTask } from '../slices/todos'
+import { postTaskThenFetch } from '../slices/todos'
+
+interface InputState {
+  task: string
+}
 
 function AddTodo() {
-  const [input, setInput] = useState('')
   const dispatch = useAppDispatch()
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value)
+  const [input, setInput] = useState<InputState>({
+    task: '',
+  })
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInput({
+      ...input,
+      [event.target.name]: event.target.value,
+    })
   }
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (input) {
-      dispatch(addTask({ text: input }))
-      setInput('')
-    }
+  const handleFormSubmit = (event: FormEvent) => {
+    event.preventDefault()
+    dispatch(postTaskThenFetch(input))
   }
 
   return (
     <form onSubmit={handleFormSubmit}>
       <input
+        type="text"
+        name="task"
         className="new-todo"
         placeholder="What needs to be done?"
         autoFocus={true}
-        value={input}
+        value={input.task}
         onChange={handleInputChange}
       />
     </form>
