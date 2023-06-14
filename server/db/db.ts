@@ -11,7 +11,7 @@ export function addTodos(task: TodoDraft, db = connection) {
 }
 
 export function deleteTodos(id: number, db = connection) {
-  return db('Todos').where({ id: id }).delete()
+  return db('Todos').where({ 'id': id }).delete()
 }
 
 export function updateTodos(updateTaks: Todo, db = connection) {

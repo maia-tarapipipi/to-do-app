@@ -13,8 +13,9 @@ export function addTodos(task: TodoDraft) {
   return request.post(url).send(task)
 }
 // i change id to string because was complaining it may not work
-export function deleteTodos(id: string) {
-  return request.delete(url).send(id)
+export function deleteTodos(id: number) {
+  const stringId = String(id); // Convert id to a string
+  return request.delete(`${url}${stringId}`);
 }
 
 export function updateTodos(updateTaks: Todo) {
