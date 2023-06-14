@@ -2,26 +2,30 @@ import { FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import { postTodoThenFetch } from '../slices/todos'
 
+const initialState = {name: '',
+priority: '',
+completed: false,
+
+}
+
 // eslint-disable-next-line no-unused-vars
 function AddTodo() {
+  const [todo, setTodo] = useState(initialState)
   const dispatch = useAppDispatch()
-  const [todo, setTodo] = useState({
-    name: '',
-    priority: '',
-    completed: '',
-  })
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTodo({
       ...todo,
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     })
   }
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault()
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault()
     dispatch(postTodoThenFetch(todo))
   }
+
+  // dispatch(postTodoThenFetch(todo))
+  // setTodo(initialState)
 
   return (
     <>
@@ -45,14 +49,14 @@ function AddTodo() {
         <div>
           <input
             type="text"
-            name="name"
+            name="priority"
             placeholder=" "
             value={todo.priority}
             onChange={handleChange}
             className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
           />
           <label
-            htmlFor="name"
+            htmlFor="priority"
             className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
           >
             Priority(High/Medium/Low)
@@ -61,14 +65,14 @@ function AddTodo() {
         <div>
           <input
             type="text"
-            name="name"
+            name="completed"
             placeholder=" "
             value={todo.completed}
             onChange={handleChange}
             className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
           />
           <label
-            htmlFor="name"
+            htmlFor="completed"
             className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
           >
             Completed?

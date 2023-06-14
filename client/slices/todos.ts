@@ -18,10 +18,12 @@ const slice = createSlice({
   name: 'todos',
   initialState: [] as Todo[],
   reducers: {},
-  extraReducers: (builder) =>
+  extraReducers: (builder) => 
     builder
       .addCase(fetchTodos.fulfilled, (state, { payload }) => payload)
       .addCase(postTodoThenFetch.fulfilled, (state, { payload }) => payload),
-})
+  },
+
+    )
 
 export default slice.reducer

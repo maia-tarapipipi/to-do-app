@@ -8,6 +8,6 @@ export async function getTodos() {
   return res.body as Todo[]
 }
 
-export function addTodo(todo: NewTodo) {
+export async function addTodo(todo: NewTodo) {
   return request.post(Url).send(todo)
 }
