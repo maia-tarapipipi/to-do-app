@@ -8,29 +8,36 @@ function AddTodo() {
   const dispatch = useAppDispatch()
   const [form, setForm] = useState({} as ToDoDraft)
 
-  function handleClick(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setForm({ ...form, todo: event.target.value })
   }
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
     dispatch(postTodoThenFetch(form))
+    setForm({ todo: '' } as ToDoDraft)
   }
 
   return (
     <>
       <form id="form" noValidate>
         <div className="formBox">
+          <label htmlFor="todoInput">Todo:</label>
           <input
+            id="todoInput"
             className="new-todo"
             placeholder="What needs to be done?"
             name="todo"
-            onChange={handleClick}
+            value={form.todo}
+            onChange={handleChange}
+            autoFocus={true}
           />
         </div>
+      </form>
+      <div>
         <button type="button" onClick={handleSubmit} className="button">
           Add
         </button>
-      </form>
+      </div>
     </>
   )
 }

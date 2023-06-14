@@ -9,8 +9,6 @@ function App() {
       </header>
       <AddTodo />
       <List />
-      <section className="main"></section>
-      <footer className="footer"></footer>
     </>
   )
 }
