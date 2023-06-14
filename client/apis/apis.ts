@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { ToDo } from '../../modules/todo'
+import { ToDo, ToDoDraft } from '../../modules/todo'
 
 const url = '/api/v1/todos/'
 
@@ -8,6 +8,6 @@ export async function getTodos() {
   return res.body as ToDo[]
 }
 
-// export function addNewFilm(film: FilmDraft) {
-//   return request.post(url).send(film)
-// }
+export function addNewTodo(todo: ToDoDraft) {
+  return request.post(url).send(todo)
+}

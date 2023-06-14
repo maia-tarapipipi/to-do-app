@@ -5,10 +5,10 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>todos</h1>
-        <AddTodo />
-        <List />
+        <h1>Sarah todos</h1>
       </header>
+      <AddTodo />
+      <List />
       <section className="main"></section>
       <footer className="footer"></footer>
     </>

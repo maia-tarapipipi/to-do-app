@@ -1,8 +1,8 @@
 import connection from './connection'
 import { ToDoDraft, ToDo } from '../../modules/todo'
 
-export async function getTodos(db = connection) {
-  return (await db('todos').select()) as Promise<ToDo[]>
+export async function getTodos(db = connection): Promise<ToDo[]> {
+  return await db('todos').select()
 }
 
 export async function addTodo(
