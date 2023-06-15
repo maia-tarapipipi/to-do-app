@@ -65,6 +65,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
+    "bulma": "^0.9.4",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2",

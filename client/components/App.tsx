@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <header className="header">
+      <header>
         <AddTodo onEnterPressed={handleEnterPressed} />
         {isListVisible && <List />}
       </header>

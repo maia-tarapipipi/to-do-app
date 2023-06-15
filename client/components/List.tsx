@@ -16,18 +16,27 @@ function List() {
   }
 
   return (
-    <div>
-      <div className="flex flex-row flex-wrap justify-evenly mt-5">
-        {todos.map((todo) => (
-          <div key={todo.id} className="m-4 max-w-md">
-            <div className="bg-slate-200 block rounded-lg shadow-lg  p-10">
-              <button onClick={() => handleDeleteTodo(todo.id)}>X</button>
-              <p className="text-gray-900 text-xl leading-tight font-medium mb-2">
+    <div className="container has-text-centered ">
+      <div className="columns is-centered">
+        <div className="column is-two-fifths notification is-warning">
+          {todos.map((todo) => (
+            <div className="block" key={todo.id}>
+              <p
+                className="block"
+                style={{ display: 'inline-block', marginRight: '10px' }}
+              >
                 {todo.todo}
               </p>
+              <button
+                className="delete is-medium"
+                onClick={() => handleDeleteTodo(todo.id)}
+                style={{ display: 'inline-block' }}
+              >
+                x
+              </button>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
