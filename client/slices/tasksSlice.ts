@@ -1,10 +1,9 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { NewTask, Task } from '../../models/tasks';
 import { getTodos, addTodo, updateTodo, deleteTodo } from '../apis/apis';
 
 export const fetchTodos = createAsyncThunk('tasks/fetchTodos', async () => {
-  const todos = await getTodos();
-  return todos as Task[];
+  return await getTodos();
 });
 
 export const addTaskAndFetch = createAsyncThunk(
@@ -12,7 +11,7 @@ export const addTaskAndFetch = createAsyncThunk(
   async (task: NewTask) => {
     await addTodo(task);
     const todos = await getTodos();
-    return todos as Task[];
+    return todos;
   }
 );
 
@@ -21,7 +20,7 @@ export const updateTaskAndFetch = createAsyncThunk(
   async (task: Task) => {
     await updateTodo(task);
     const todos = await getTodos();
-    return todos as Task[];
+    return todos;
   }
 );
 
@@ -30,7 +29,7 @@ export const deleteTaskAndFetch = createAsyncThunk(
   async (taskId: number) => {
     await deleteTodo(taskId);
     const todos = await getTodos();
-    return todos as Task[];
+    return todos;
   }
 );
 
@@ -40,9 +39,9 @@ const tasksSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTodos.fulfilled, (state, { payload }) => {
-        return {...state, payload};
-      })
+      .addCase(fetchTodos.fulfilled, (state, { payload }) =>
+        payload
+      )
       .addCase(addTaskAndFetch.fulfilled, (state, { payload }) => {
         return {...state, payload};
       })

@@ -7,6 +7,7 @@ import { NewTask } from '../../models/tasks'
 router.get('/', (req, res) => {
   db.getTodos()
     .then((todos) => {
+      // console.log("Routes todos", todos);
       res.json(todos)
     })
     .catch((err) => {

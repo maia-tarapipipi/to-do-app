@@ -6,9 +6,9 @@ export default function App() {
     <>
       <header className="header">
         <h1>todos</h1>
+        <List />
         <AddTodo />
       </header>
-      <List />
       <section className="main"></section>
       <footer className="footer"></footer>
     </>

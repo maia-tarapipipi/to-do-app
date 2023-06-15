@@ -1,7 +1,7 @@
 export interface NewTask {
   name: string
   priority: string
-  completed: string
+  completed: boolean
 }
 
 export interface Task extends NewTask {

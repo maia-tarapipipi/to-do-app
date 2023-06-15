@@ -1,23 +1,25 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { fetchTodos } from '../slices/tasksSlice';
-import { Task } from '../../models/tasks';
+// import { Task } from '../../models/tasks';
 
 function List() {
   const dispatch = useAppDispatch();
-  const todos: Task[] = useAppSelector((state) => state.tasks);
-
+  const todos = useAppSelector((state) => state.tasks);
+  console.log("List todos:", todos)
+  
   useEffect(() => {
     dispatch(fetchTodos());
-  }, [dispatch]);
+  }, []);
 
  return (
   <div>
-    {todos.map((todo: Task) => (
+    <h1>Test List Heading</h1>
+    {todos.map((todo) => (
       <div key={todo.id}>
-        <h5>{todo.name}</h5>
-        <p>{todo.priority}</p>
-        <p>{todo.completed}</p>
+        <h5>Name: {todo.name}</h5>
+        <p>Priority: {todo.priority}</p>
+        <p>Completed: {todo.completed}</p>
       </div>
     ))}
   </div>
