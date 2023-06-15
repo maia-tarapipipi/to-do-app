@@ -29,10 +29,10 @@ router.post('/', (req, res) => {
     })
 })
 
-router.delete('/', async (req, res) => {
-  const { id } = req.body
+router.delete('/:id', async (req, res) => {
+  const id = req.params.id
  
-  db.deleteTodos(id)
+  db.deleteTodos(Number(id))
     .then(() => {
       res.sendStatus(200)
     })

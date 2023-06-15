@@ -34,11 +34,11 @@ const todosSlice = createSlice({
     builder
       .addCase(fetchTodos.fulfilled, (state, { payload }) => payload)
       .addCase(postTodosThenFetch.fulfilled, (state, { payload }) => payload)
-      .addCase(deleteTodoThenFetch.fulfilled, (state, action) => {
-        const deletedTodoId = action.meta.arg;
-        const updatedState = state.filter((todo) => todo.id !== deletedTodoId);
-        return updatedState;
-      }),
-});
+      .addCase(deleteTodoThenFetch.fulfilled, (state, {payload}) => payload)
+        // const deletedTodoId = action.meta.arg;
+        // const updatedState = state.filter((todo) => todo.id !== deletedTodoId);
+        // return updatedState;
+      })
+
 
 export default todosSlice.reducer
