@@ -11,7 +11,7 @@ interface Todo extends TodoDraft {
 
 //GET todos
 export function getTasks(db = connection) {
-  return db('todos').select() as Todo
+  return db('todos').select().orderBy('completed', 'desc') as Todo
 }
 
 //POST add todo

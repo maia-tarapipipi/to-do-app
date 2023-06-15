@@ -1,18 +1,20 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchTasks } from '../slices/todos'
 
 function ToDoList() {
   const todos = useAppSelector((state) => state.tasks)
+  const [check, setCheck] = useState(false)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(fetchTasks())
-  }, [])
+  }, [check])
 
-  // function handleClick(){
-
-  // }
+function handleChange(e:React.ChangeEvent<HTMLInputElement>) {
+  const target = e.target  
+  setCheck(target.checked)
+}
 
   return (
     <><div className="todoList">
@@ -22,7 +24,7 @@ function ToDoList() {
             return (
               <li key={todo.id}>
                 {todo.priority}
-                <input type="checkbox" checked={false} /> {todo.task}
+                <input type="checkbox" onChange={handleChange} /> {todo.task}
               </li>
             )
           })}
