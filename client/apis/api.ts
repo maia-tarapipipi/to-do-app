@@ -12,12 +12,9 @@ export async function getTodos() {
 export function addTodos(task: TodoDraft) {
   return request.post(url).send(task)
 }
-// i change id to string because was complaining it may not work
+
 export function deleteTodos(id: number) {
-  // const stringId = String(id); // Convert id to a string
   return request.delete(`${url}${id}`);
 }
 
-export function updateTodos(updateTaks: Todo) {
-  return request.patch(url).send(updateTaks)
-}
+

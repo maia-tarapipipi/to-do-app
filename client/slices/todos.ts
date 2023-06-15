@@ -3,7 +3,6 @@ import {
   addTodos,
   deleteTodos,
   getTodos,
-  // updateTodos,
 } from '../apis/api'
 import { Todo, TodoDraft } from '../../models/todos'
 
@@ -35,9 +34,6 @@ const todosSlice = createSlice({
       .addCase(fetchTodos.fulfilled, (state, { payload }) => payload)
       .addCase(postTodosThenFetch.fulfilled, (state, { payload }) => payload)
       .addCase(deleteTodoThenFetch.fulfilled, (state, {payload}) => payload)
-        // const deletedTodoId = action.meta.arg;
-        // const updatedState = state.filter((todo) => todo.id !== deletedTodoId);
-        // return updatedState;
       })
 
 

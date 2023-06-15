@@ -12,7 +12,7 @@ function List() {
 
   const handleDeleteTodo = (id: number) => {
     dispatch(deleteTodoThenFetch(id))
-    console.log('working', id)
+   
   }
 
   return (
