@@ -29,4 +29,23 @@ router.post('/', (req, res) => {
     })
 })
 
-export default router
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  
+  if (!id) {
+    return res.status(400).json({ message: 'Missing ID in request params' });
+  }
+  
+  db.deleteTodo(Number(id))
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err: Error) => {
+      console.error(err);
+      res.status(500).json({ message: 'Error in server' });
+    });
+});
+
+
+
+export default router;

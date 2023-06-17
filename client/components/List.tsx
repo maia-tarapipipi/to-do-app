@@ -1,36 +1,57 @@
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { fetchTodos } from '../slices/todos'
+import { useTodos, useDeleteTodo } from '../apis/api';
 
-function List() {
-  const dispatch = useAppDispatch()
-  const todos = useAppSelector((state) => state.todos)
+function TodoList() {
+  const { data: todos = [], isLoading, isError, refetch } = useTodos();
+  const deleteTodoMutation = useDeleteTodo();
 
-  useEffect(() => {
-    dispatch(fetchTodos())
-  }, [])
+  const handleComplete = async (id) => {
+    try {
+      await deleteTodoMutation.mutateAsync(id);
+      refetch(); // Refetch todos after completing a task
+    } catch (error) {
+      // Handle error
+    }
+  };
+
+  if (isLoading) {
+    return <div>Loading todos...</div>;
+  }
+
+  if (isError) {
+    return <div>Error fetching todos</div>;
+  }
 
   return (
     <div>
-      <div className="flex flex-row flex-wrap justify-evenly mt-5">
+      <ul>
         {todos.map((todo) => (
-          <div key={todo.id} className="m-4 max-w-md">
-            <div className="bg-slate-200 block rounded-lg shadow-lg  p-10">
-              <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">
-                {todo.name}
-              </h5>
-              <small className="text-gray-700 text-base mb-4 italic">
-                {todo.priority}
-              </small>
-              <small className="text-gray-700 text-base mb-4 italic">
-                {todo.completed}
-              </small>
-            </div>
-          </div>
+          <li
+            key={todo.id}
+            style={{
+              marginBottom: '0.5rem',
+              padding: '0.5rem',
+
+               }}
+          >
+            <span>{todo.name}</span>
+            <button
+              onClick={() => handleComplete(todo.id)}
+              style={{
+                marginLeft: '0.5rem',
+                padding: '0.25rem 0.5rem',
+                backgroundColor: 'red',
+                color: 'white',
+                borderRadius: '0.25rem',
+                cursor: 'pointer',
+              }}
+            >
+              Complete
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
-  )
+  );
 }
 
-export default List
+export default TodoList;

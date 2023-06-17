@@ -19,7 +19,7 @@ exports.seed = function (knex) {
           id: 3,
           name: 'Exercise',
           priority: 'High',
-          completed: 'Yes'
+          completed: 'No'
         },
         
       ])

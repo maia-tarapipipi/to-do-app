@@ -9,3 +9,8 @@ export function addTodo(todo: NewTodo, db = connection) {
   const { name, priority, completed } = todo
   return db('todos').insert({ name, priority, completed })
 }
+
+export function deleteTodo(id: number, db = connection) {
+  return db('todos').where('id', id).delete();
+}
+
