@@ -5,7 +5,6 @@ import { fetchTodos } from '../slices/todos'
 function TodoList() {
   const dispatch = useAppDispatch()
   const todos = useAppSelector((state) => state.todos)
-  console.log(todos)
 
   useEffect(() => {
     dispatch(fetchTodos())
