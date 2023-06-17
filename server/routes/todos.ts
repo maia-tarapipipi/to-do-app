@@ -32,4 +32,12 @@ router.post('/', (req, res) => {
     })
 })
 
+//DELETE A TODO BY ID
+router.delete('/:id', (req, res) => {
+  const id = Number (req.params.id)
+  try{
+    await db.deleteTodos(id)
+    res
+  }
+})
 export default router

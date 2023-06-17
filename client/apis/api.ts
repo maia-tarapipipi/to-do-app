@@ -11,3 +11,7 @@ export async function getTodos() {
 export function addTodo(todo: TodoDraft) {
   return request.post(url).send(todo)
 }
+
+export function deleteTodo (id: number) {
+  return request.delete(id)
+}
