@@ -8,7 +8,7 @@
     "build": "run-s build:client build:server",
     "build:client": "vite build",
     "build:server": "tsc -p server/tsconfig.json",
-    "start": "node dist/server/index.js",
+    "start": "ts-node dist/server/index.js",
     "test": "vitest",
     "dev": "run-p dev:client dev:server",
     "dev:client": "vite",
@@ -29,6 +29,14 @@
     ]
   },
   "devDependencies": {
+    
+  },
+  "dependencies": {
+    "@redux-devtools/extension": "^3.2.3",
+    "express": "^4.17.2",
+    "knex": "^2.3.0",
+    "sqlite3": "^5.1.2",
+    "superagent": "^7.1.1",
     "@devacademy/eslint-config": "^1.8.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -62,13 +70,6 @@
     "typescript": "~4.8.4",
     "vite": "^4.3.5",
     "vitest": "^0.31.0"
-  },
-  "dependencies": {
-    "@redux-devtools/extension": "^3.2.3",
-    "express": "^4.17.2",
-    "knex": "^2.3.0",
-    "sqlite3": "^5.1.2",
-    "superagent": "^7.1.1"
   },
   "prettier": {
     "semi": false,
