@@ -4,6 +4,7 @@ import { TaskData } from '../../models/Todos'
 
 const route = express.Router()
 
+// lists all of the tasks
 route.get('/', async (req, res) => {
   try {
     const todos = await db.getList()
@@ -15,6 +16,7 @@ route.get('/', async (req, res) => {
   }
 })
 
+// adds new task
 route.post('/', async (req, res) => {
   try {
     const newTask: TaskData = {
@@ -29,6 +31,7 @@ route.post('/', async (req, res) => {
   }
 })
 
+// deletes task by id
 route.delete('/:id', async (req, res) => {
   try {
     const taskId = Number(req.params.id)
@@ -40,7 +43,5 @@ route.delete('/:id', async (req, res) => {
     }
   }
 })
-
-// make patch route to update completed todos
 
 export default route
