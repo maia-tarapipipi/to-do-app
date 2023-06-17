@@ -15,7 +15,7 @@ function TodoList() {
     <>
       {todos.map((todo) =>
       (
-      <div key={todo.id}>
+      <div key={todo.id} className='todo-list'>
         <input type="checkbox"></input>
         {todo.taskDetails}
       </div>

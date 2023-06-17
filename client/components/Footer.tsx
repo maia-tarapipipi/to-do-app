@@ -4,18 +4,18 @@ function Footer() {
       <div className="footer-items">
         <span>0 item left</span>
         <ul className="filters">
-          <li>
+          <p>
             <a href="#">All</a>
-          </li>
-          <li>
+          </p>
+          <p>
             <a href="#">Active</a>
-          </li>
-          <li>
+          </p>
+          <p>
             <a href="#">Completed</a>
-          </li>
-          <li>
+          </p>
+          <p>
             <a href="#">Clear completed</a>
-          </li>
+          </p>
         </ul>
       </div>
     </footer>

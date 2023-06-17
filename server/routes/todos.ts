@@ -1,21 +1,19 @@
 import express = require('express')
-const router = express.Router()
 import db = require('../db/db')
-import { TodoDraft } from '../../common/todo'
+import { Todo, TodoDraft } from '../../common/todo'
+
+const router = express.Router()
 
 //TODO: add get route
-router.get('/', (req, res) => {
-  db.getTodos()
-    .then((fetchedTodos: TodoDraft[]) => {
-      res.json(fetchedTodos)
-      console.log(fetchedTodos)
-    })
-    .catch((err) => {
-      console.error(err)
-      res
-        .status(500)
-        .json({ message: 'something went wrong rendering data from the db' })
-    })
+router.get('/', async(req, res) => {
+ try {
+  const todos = await db.getTodos()
+  res.status(200)
+  res.json(todos)
+
+ } catch (error) {
+  console.error('Server: something went wrong getting data.')
+ }
 })
 
 //TODO: add post route

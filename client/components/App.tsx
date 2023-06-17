@@ -4,9 +4,9 @@ import TodoList from './TodoList'
 
 function App() {
   return (
-    <>
+    <div className="container">
       <header className="header">
-        <h1>todos</h1>
+        <h1>Todo List</h1>
         <AddTodo />
       </header>
       <section className="main">
@@ -15,7 +15,7 @@ function App() {
       <footer className="footer">
         <Footer />
       </footer>
-    </>
+    </div>
   )
 }
 
