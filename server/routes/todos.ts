@@ -46,6 +46,25 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+  const { id } = req.params;
+  const { name, priority, completed } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: 'Missing ID in request params' });
+  }
+
+  db.updateTodo(Number(id), { name, priority, completed })
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err: Error) => {
+      console.error(err);
+      res.status(500).json({ message: 'Error in server' });
+    });
+});
+
+
 
 
 export default router;

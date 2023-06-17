@@ -9,7 +9,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <header className="header">
-        <h1>todos</h1>
+        <h1>TASKS</h1>
         <AddTodo />
       </header>
 

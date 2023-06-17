@@ -16,6 +16,11 @@ export function useDeleteTodo() {
   return useMutation((id: number) => deleteTodo(id));
 }
 
+export function useUpdateTodo() {
+  return useMutation((updatedTodo: Todo) => updateTodo(updatedTodo));
+}
+
+
 async function getTodos() {
   const res = await request.get(Url);
   return res.body as Todo[];
@@ -30,3 +35,9 @@ async function deleteTodo(id: number) {
   const res = await request.delete(`${Url}${id}`);
   return res.body as Todo;
 }
+
+async function updateTodo(updatedTodo: Todo) {
+  const res = await request.put(`${Url}${updatedTodo.id}`).send(updatedTodo);
+  return res.body as Todo;
+}
+

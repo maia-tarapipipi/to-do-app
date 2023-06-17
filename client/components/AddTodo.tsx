@@ -1,5 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { useAddTodo, useTodos, useDeleteTodo } from '../apis/api';
+import { useAddTodo, useTodos } from '../apis/api';
+
+const priorityColors: { [key: string]: string } = {
+  High: '#FF8551',
+  Medium: '#FFD89C',
+  Low: '#A2CDB0',
+};
 
 const initialState = {
   name: '',
@@ -9,6 +15,8 @@ const initialState = {
 
 function AddTodo() {
   const [todo, setTodo] = useState(initialState);
+  const [error, setError] = useState('');
+
   const addTodoMutation = useAddTodo();
   const { refetch } = useTodos();
 
@@ -19,8 +27,23 @@ function AddTodo() {
     });
   };
 
+  const handleChangePriority = (e: ChangeEvent<HTMLSelectElement>) => {
+    setTodo({
+      ...todo,
+      priority: e.target.value,
+    });
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (todo.name === '' || todo.priority === '') {
+      setError('Please fill in all the fields.');
+      return;
+    }
+
+    setError('');
+
     try {
       await addTodoMutation.mutateAsync(todo);
       setTodo(initialState);
@@ -43,16 +66,32 @@ function AddTodo() {
             style={{ marginBottom: '0.5rem', padding: '0.5rem' }}
           />
         </div>
-        <div>
-          <input
-            type="text"
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <select
             name="priority"
-            placeholder="Priority (High/Medium/Low)"
             value={todo.priority}
-            onChange={handleChange}
-            style={{ marginBottom: '0.5rem', padding: '0.5rem' }}
-          />
+            onChange={handleChangePriority}
+            style={{
+              marginBottom: '0.5rem',
+              padding: '0.5rem',
+              backgroundColor: priorityColors[todo.priority],
+              color: 'white',
+            }}
+          >
+            <option value="">Select priority</option>
+            <option value="High" style={{ backgroundColor: priorityColors.High }}>
+              High
+            </option>
+            <option value="Medium" style={{ backgroundColor: priorityColors.Medium }}>
+              Medium
+            </option>
+            <option value="Low" style={{ backgroundColor: priorityColors.Low }}>
+              Low
+            </option>
+          </select>
+          <div style={{ marginLeft: '0.5rem', fontWeight: 'bold' }}>Priority</div>
         </div>
+        {error && <div style={{ color: 'red' }}>{error}</div>}
       </form>
       <div>
         <button
@@ -60,7 +99,7 @@ function AddTodo() {
           form="form"
           style={{
             padding: '0.5rem 1rem',
-            backgroundColor: 'blue',
+            backgroundColor: '#025464',
             color: 'white',
             borderRadius: '0.25rem',
             cursor: 'pointer',
@@ -73,4 +112,4 @@ function AddTodo() {
   );
 }
 
-export default AddTodo
+export default AddTodo;
