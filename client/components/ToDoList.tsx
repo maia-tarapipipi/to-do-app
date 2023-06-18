@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { fetchTasks } from '../slices/todos'
+import { fetchTasks, removeTask } from '../slices/todos'
+import { editTask } from '../apis/api'
 
 function ToDoList() {
   const todos = useAppSelector((state) => state.tasks)
@@ -16,9 +17,13 @@ function handleChange(e:React.ChangeEvent<HTMLInputElement>) {
   setCheck(target.checked)
 }
 
-function handleClick(e:React.MouseEvent<HTMLButtonElement>) {
-  dispatch(deleteTask())
+function handleDelete( id:number) { 
+  dispatch(removeTask(id))
 }
+
+// function handleEdit(e: React.MouseEvent<HTMLButtonElement>) {
+//   dispatch(editTask())
+// }
 
   return (
     <><div className="todoList">
@@ -29,12 +34,13 @@ function handleClick(e:React.MouseEvent<HTMLButtonElement>) {
               <li key={todo.id}>
                 {todo.priority}
                 <input type="checkbox" onChange={handleChange} /> {todo.task}
-                <button onClick={() => {handleClick(todo.id)}}>X</button>
+                {/* <button id='edit' onClick={() => {handleEdit}}>Edit</button> */}
+                <button id='del' onClick={() => {handleDelete(todo.id)}}>Del</button>
               </li>
             )
           })}
         </ul>
-        Priority scale from 0 (lowest) - 10 (highest)
+        
     </div>
     </>
   )

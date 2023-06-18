@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store'
-import { addTask, getTasks } from '../apis/api'
+import { deleteTask, addTask, getTasks } from '../apis/api'
 import { TaskDraft, Task } from '../models/models'
 
 export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
@@ -20,13 +20,13 @@ export const postTaskThenFetch = createAsyncThunk(
   }
 )
 
-// export const deleteTask = createAsyncThunk(
-//   'tasks/deleteTask',
-//   async (task: TaskDraft) => {
-//     await del(task)
-//     return await getTasks()
-//   }
-// )
+export const removeTask = createAsyncThunk(
+  'tasks/deleteTask',
+  async (id: number) => {
+    await deleteTask(id)
+    return await getTasks()
+  }
+)
 
 export const taskSlice = createSlice({
   name: 'tasks',
@@ -36,6 +36,7 @@ export const taskSlice = createSlice({
     builder
       .addCase(fetchTasks.fulfilled, (_, { payload }) => payload)
       .addCase(postTaskThenFetch.fulfilled, (_, { payload }) => payload)
+      .addCase(removeTask.fulfilled, (_, {payload}) => payload)
   },
 })
 

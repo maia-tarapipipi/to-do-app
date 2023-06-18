@@ -48,7 +48,6 @@ router.delete('/:id',async (req, res) => {
     console.log('ROUTE: delete');
     await db.deleteTodo(Number(req.params.id))
     res.sendStatus(200)
-
   } catch (error) {
     if (error instanceof Error) {
       console.error('Server: Oops, something went wrong deleting data')
