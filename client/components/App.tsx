@@ -7,7 +7,7 @@ function App() {
       <main className="main">
         <h1>Todos List</h1>
         <AddTodo />
-        {/* <ToDoList /> */}
+        <ToDoList />
       </main>
       <footer className="footer"></footer>
     </>
