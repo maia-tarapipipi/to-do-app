@@ -4,22 +4,22 @@ exports.seed = function (knex) {
     .then(function () {
       return knex('tasks').insert([
         {
-          TaskID: 1,
-          TaskName: 'make food',
-          Priority: 'high',
-          Completed: false,
+          id: 1,
+          task_name: 'make food',
+          priority: 'high',
+          completed: false,
         },
         {
-          TaskID: 2,
-          TaskName: 'make bed',
-          Priority: 'high',
-          Completed: false,
+          id: 2,
+          task_name: 'make bed',
+          priority: 'high',
+          completed: false,
         },
         {
-          TaskID: 3,
-          TaskName: 'make breakie',
-          Priority: 'high',
-          Completed: false,
+          id: 3,
+          task_name: 'make breakie',
+          priority: 'high',
+          completed: false,
         },
       ])
     })

@@ -1,9 +1,9 @@
 export interface TaskDraft {
-  TaskName: string
-  Priority: string
-  Completed: boolean
+  task_name: string
 }
 
 export interface Task extends TaskDraft {
-  TaskID: number
+  id: number
+  priority: string
+  completed: boolean
 }

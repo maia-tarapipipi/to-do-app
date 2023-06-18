@@ -1,20 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { Task, TaskDraft } from '../../common/task'
+import { Task, TaskDraft } from '../../models/models'
 import { addNewTask, getTasks } from '../apis/api'
 
-export const fetchTask = createAsyncThunk('films/fetchFilms', async () => {
+export const fetchTask = createAsyncThunk('tasks/fetchTask', async () => {
   return await getTasks()
 })
 
 export const postTaskThenFetch = createAsyncThunk(
-  'Tasks/postTasks',
-  async (Task: TaskDraft) => {
-    await addNewTask(Task)
+  'tasks/postTaskThenFetch',
+  async (task: TaskDraft) => {
+    await addNewTask(task)
     return await getTasks()
   }
 )
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'tasks',
   initialState: [] as Task[],
   reducers: {},

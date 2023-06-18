@@ -1,15 +1,14 @@
-import React from 'react'
-
 import AddTodo from './AddTodo'
+import ToDoList from './toDoList'
 
 function App() {
   return (
     <>
-      <header className="header">
-        <h1>todos</h1>
+      <main className="main">
+        <h1>Todos List</h1>
         <AddTodo />
-      </header>
-      <section className="main"></section>
+        {/* <ToDoList /> */}
+      </main>
       <footer className="footer"></footer>
     </>
   )

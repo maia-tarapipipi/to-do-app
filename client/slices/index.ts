@@ -1,6 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import { TaskDraft } from '../../common/task'
+import slice from './Task'
 // import stuff from './stuff'
 
-export default combineReducers({})
+export default combineReducers({
+  tasks: slice,
+})
