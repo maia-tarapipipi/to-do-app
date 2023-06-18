@@ -12,6 +12,7 @@ export function addTodo(todo: TodoDraft) {
   return request.post(url).send(todo)
 }
 
+//DELETE TODO BY ID
 export function deleteTodo (id: number) {
   return request.delete(id)
 }

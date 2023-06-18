@@ -33,11 +33,13 @@ router.post('/', (req, res) => {
 })
 
 //DELETE A TODO BY ID
-router.delete('/:id', (req, res) => {
-  const id = Number (req.params.id)
+router.delete('/', async(req, res) => {
+  const id = Number (req.body.id)
   try{
     await db.deleteTodos(id)
-    res
+    res.status(200)
+  }catch (error) {
+    console.error(error)
   }
 })
 export default router

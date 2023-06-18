@@ -20,14 +20,11 @@ function AddTodo() {
       ...newTodo,
       taskDetails: e.target.value,
     })
-    console.log(newTodo)
-    console.log(e.target.value)
   }
 
   //TODO: create handleSubmit function to dispatch addTodo function from API
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log('here: ', newTodo)
     dispatch(postTodoThenFetch(newTodo))
   }
 

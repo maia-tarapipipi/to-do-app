@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchTodos } from '../slices/todos'
+import { deleteTodo } from '../apis/api'
 
 function TodoList() {
   const dispatch = useAppDispatch()
@@ -11,14 +12,15 @@ function TodoList() {
   }, [])
 
   //delete todos
-  // function handleClick (e: React.MouseEvent<HTMLButtonElement> ) {
-  //   const id = e.target.value
-  //   if (id === todos[id].id) {
-
-  //   }
+  function handleClick (e: React.MouseEvent<HTMLButtonElement> ) {
+    const id = e.target.value
     
-  //   console.log('clicked', id)
-  // }
+    if (id === todos[id].id-1) {
+      deleteTodo(id)
+    }
+    console.log('clicked', id)
+    console.log(todos[id].id-1)
+  }
 
   return (
     <>
