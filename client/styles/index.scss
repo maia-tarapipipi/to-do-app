@@ -12,16 +12,6 @@ body {
 
 /* AddTodo Component */
 
-form {
-  width: 90%;
-  max-width: 400px; /* Adjust this value to your preference */
-}
-
-.form-container {
-  display: flex;
-  padding-left: 20px; 
-}
-
 input[type="text"],
 select {
   margin-bottom: 0.5rem;
