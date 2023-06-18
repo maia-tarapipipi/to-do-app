@@ -57,7 +57,7 @@ function TodoList() {
   }
 
   const priorityColors: { [key: string]: string } = {
-    High: '#FF8551',
+    High: '#FFB151',
     Medium: '#FFD89C',
     Low: '#A2CDB0',
   };
@@ -123,7 +123,7 @@ function TodoList() {
               style={{
                 marginLeft: '0.5rem',
                 padding: '0.25rem 0.5rem',
-                backgroundColor: 'red',
+                backgroundColor: '#B70900',
                 color: 'white',
                 borderRadius: '0.25rem',
                 cursor: 'pointer',

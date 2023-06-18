@@ -13,6 +13,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-server.use('/api/v1/todos', todos)
+server.use('/api/v1/todos/', todos)
 
 export default server

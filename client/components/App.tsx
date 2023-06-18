@@ -19,7 +19,7 @@ function App() {
 
       <footer className="footer"></footer>
 
-      <ReactQueryDevtools initialIsOpen={false} /> {/* Optional: Devtools for React Query */}
+     
     </QueryClientProvider>
   );
 }

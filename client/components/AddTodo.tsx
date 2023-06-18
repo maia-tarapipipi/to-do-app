@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { useAddTodo, useTodos } from '../apis/api';
 
 const priorityColors: { [key: string]: string } = {
-  High: '#FF8551',
+  High: '#FFB151',
   Medium: '#FFD89C',
   Low: '#A2CDB0',
 };
@@ -63,6 +63,7 @@ function AddTodo() {
             placeholder="Task"
             value={todo.name}
             onChange={handleChange}
+            aria-label='Task'
             style={{ marginBottom: '0.5rem', padding: '0.5rem' }}
           />
         </div>
@@ -71,11 +72,12 @@ function AddTodo() {
             name="priority"
             value={todo.priority}
             onChange={handleChangePriority}
+            aria-label='Priority'
             style={{
               marginBottom: '0.5rem',
               padding: '0.5rem',
               backgroundColor: priorityColors[todo.priority],
-              color: 'white',
+              color: 'black',
             }}
           >
             <option value="">Select priority</option>
@@ -89,7 +91,7 @@ function AddTodo() {
               Low
             </option>
           </select>
-          <div style={{ marginLeft: '0.5rem', fontWeight: 'bold' }}>Priority</div>
+          
         </div>
         {error && <div style={{ color: 'red' }}>{error}</div>}
       </form>
