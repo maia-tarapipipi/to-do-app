@@ -20,6 +20,14 @@ export const postTaskThenFetch = createAsyncThunk(
   }
 )
 
+// export const deleteTask = createAsyncThunk(
+//   'tasks/deleteTask',
+//   async (task: TaskDraft) => {
+//     await del(task)
+//     return await getTasks()
+//   }
+// )
+
 export const taskSlice = createSlice({
   name: 'tasks',
   initialState: [] as Task[],

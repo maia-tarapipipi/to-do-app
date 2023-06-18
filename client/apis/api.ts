@@ -10,6 +10,15 @@ export async function getTasks() {
 }
 
 export async function addTask(task:TaskDraft) {
-  console.log(`API: `,task);  
   await request.post(url).send(task)
 }
+
+export async function deleteTask(id:number) {
+  console.log('API: delete');
+  await request.delete(`${url}/${id}`)
+}
+
+export async function editTask(task:Task) {  
+  await request.put(`${url}/${task.id}`).send(task)
+}
+

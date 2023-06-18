@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchTasks } from '../slices/todos'
 
@@ -16,6 +16,10 @@ function handleChange(e:React.ChangeEvent<HTMLInputElement>) {
   setCheck(target.checked)
 }
 
+function handleClick(e:React.MouseEvent<HTMLButtonElement>) {
+  dispatch(deleteTask())
+}
+
   return (
     <><div className="todoList">
       
@@ -25,6 +29,7 @@ function handleChange(e:React.ChangeEvent<HTMLInputElement>) {
               <li key={todo.id}>
                 {todo.priority}
                 <input type="checkbox" onChange={handleChange} /> {todo.task}
+                <button onClick={() => {handleClick(todo.id)}}>X</button>
               </li>
             )
           })}
