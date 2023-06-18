@@ -8,3 +8,4 @@ COPY . .
 
 ENV NODE_ENV=production
 RUN npm prune --omit=dev
+RUN npm run build
