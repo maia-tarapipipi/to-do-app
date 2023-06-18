@@ -384,3 +384,14 @@ html .clear-completed:active {
     bottom: 10px;
   }
 }
+
+.todoCheckbox{
+  cursor: pointer;
+}
+
+.todoLabel{
+  font-size: 26px;
+}
+.todoCheckbox:checked + .todoLabel {
+  text-decoration: line-through;
+}

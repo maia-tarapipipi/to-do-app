@@ -14,7 +14,12 @@ function List() {
     <div>
       <div className="todoBox">
         {todos.map((todo) => (
-          <div key={todo.id}>{todo.todo}</div>
+          <div key={todo.id}>
+            <input type="checkbox" id={`${todo.id}`} className="todoCheckbox" />
+            <label htmlFor={`${todo.id}`} className="todoLabel">
+              {todo.todo}
+            </label>
+          </div>
         ))}
       </div>
     </div>
