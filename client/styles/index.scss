@@ -11,6 +11,19 @@ body {
 }
 
 /* AddTodo Component */
+
+form {
+  width: 90%;
+  max-width: 400px; /* Adjust this value to your preference */
+}
+
+.form-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 20px; 
+}
+
 input[type="text"],
 select {
   margin-bottom: 0.5rem;
@@ -28,6 +41,7 @@ select {
   border-radius: 0.25rem;
   cursor: pointer;
 }
+
 
 /* List Component */
 .todo-list li {
