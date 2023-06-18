@@ -3,7 +3,6 @@ import * as Path from 'node:path'
 import todos from './routes/todos'
 
 const server = express()
-
 server.use(express.json())
 
 if (process.env.NODE_ENV === 'production') {
