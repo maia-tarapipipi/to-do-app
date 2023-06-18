@@ -14,4 +14,16 @@ route.get('/', async (req, res) => {
   }
 })
 
+route.post('/', async (req, res) => {
+  try {
+    const { todoDetails, priority } = req.body
+    await db.addTodo({ todoDetails, priority })
+    res.sendStatus(201)
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(500).json({ err: `Oh dear! trouble posting :/` })
+    }
+  }
+})
+
 export default route

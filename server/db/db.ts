@@ -1,5 +1,5 @@
 import connection from './connection'
-import { TodosData } from '../../models/models'
+import { TodoForm, TodosData } from '../../models/models'
 
 export function getTodos(db = connection) {
   return db<TodosData>('todos').select(
@@ -8,4 +8,9 @@ export function getTodos(db = connection) {
     'completed',
     'priority'
   )
+}
+
+export function addTodo(input: TodoForm, db = connection) {
+  const { todoDetails, priority } = input
+  return db('todos').insert({ todo_details: todoDetails, priority: priority })
 }

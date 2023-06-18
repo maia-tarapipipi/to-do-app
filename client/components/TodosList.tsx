@@ -10,17 +10,21 @@ function TodosList() {
     dispatch(fetchTodos())
   }, [])
 
+  function clickHandler() {
+
+  }
+
   return (
     <div>
       <ul>
         {todosList.map((todo) => (
-          <li key={todo.id}>
-            Todo: {todo.todoDetails}, Priority: {todo.priority}, Completed:
-            {todo.completed}
+          <li key={todo.id} className="todo-list">
+            Todo: {todo.todoDetails}, Priority: {todo.priority}, Completed:{' '}
+            <input type="checkbox" onClick={clickHandler} />
+            {/* {Boolean(todo.completed) == false ? '✔️' : '❌'} */}
           </li>
         ))}
       </ul>
-      <p>Priority Scale 1-High, 5-low</p>
     </div>
   )
 }
