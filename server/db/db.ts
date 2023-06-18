@@ -1,8 +1,8 @@
 import connection from './connection'
 import { TodoDraft } from '../../common/todo'
 
-export async function getTodos(db = connection) {
-  return await db('todos').select(
+export function getTodos(db = connection) {
+  return db('todos').select(
     'id',
     'task_details as taskDetails',
     'priority',

@@ -7,8 +7,9 @@ export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
   return await getTodos()
 })
 
+//Add todos
 export const postTodoThenFetch = createAsyncThunk(
-  'todo/addTodo',
+  'todo/postTodoThenFetch',
   async (todo: TodoDraft) => {
     console.log('dlaf', todo)
     await addTodo(todo)
