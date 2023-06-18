@@ -1,12 +1,10 @@
 import { useEffect } from 'react'
-import { TodosData } from '../../models/models'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchTodos } from '../slices/todosList'
 
 function TodosList() {
-  // i need a use app selector first
   const dispatch = useAppDispatch()
-  const todosList = useAppSelector((state) => state.todosList as TodosData[])
+  const todosList = useAppSelector((state) => state.todosList)
 
   useEffect(() => {
     dispatch(fetchTodos())
@@ -17,12 +15,12 @@ function TodosList() {
       <ul>
         {todosList.map((todo) => (
           <li key={todo.id}>
-            Todo: {todo.todoDetails}, Priority: {todo.priority}, Completed:{' '}
+            Todo: {todo.todoDetails}, Priority: {todo.priority}, Completed:
             {todo.completed}
           </li>
         ))}
       </ul>
-      <p>Priority Scale 1-High, 10-low</p>
+      <p>Priority Scale 1-High, 5-low</p>
     </div>
   )
 }

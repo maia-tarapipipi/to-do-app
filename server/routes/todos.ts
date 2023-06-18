@@ -1,5 +1,3 @@
-import connection from '../db/connection'
-import { TodoDraft, TodosData } from '../../models/models'
 import * as db from '../db/db'
 import express from 'express'
 

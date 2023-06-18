@@ -12,6 +12,7 @@ function AddTodo() {
           placeholder="What needs to be done?"
           autoFocus={true}
         />
+        <input type="number"></input>
         <button type="submit">Submit</button>
       </form>
     </>
