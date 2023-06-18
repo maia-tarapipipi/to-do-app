@@ -2,10 +2,10 @@ import express from 'express'
 import * as Path from 'node:path'
 import todos from './routes/todos'
 
-
 const server = express()
 
 server.use(express.json())
+server.use('/api/v1', todos)
 
 if (process.env.NODE_ENV === 'production') {
   server.use('/assets', express.static(Path.resolve(__dirname, '../assets')))
@@ -13,7 +13,5 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(Path.resolve(__dirname, '../index.html'))
   })
 }
-
-server.use('/api/v1', todos)
 
 export default server
