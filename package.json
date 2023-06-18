@@ -28,9 +28,7 @@
       "bundle.js"
     ]
   },
-  "devDependencies": {
-    
-  },
+  "devDependencies": {},
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
     "express": "^4.17.2",
