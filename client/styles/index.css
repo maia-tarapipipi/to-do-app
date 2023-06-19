@@ -57,5 +57,11 @@ body {
   /* margin-left: 265px; */
   margin: auto;
   border: 1px solid black;
-  width: 50% 
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.del-button {
+  margin: auto;
 }

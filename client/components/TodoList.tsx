@@ -24,7 +24,7 @@ function TodoList() {
         <div key={todo.id} className="todo-list">
           <input type="checkbox"></input>
           {todo.taskDetails}
-          <button onClick={() => handleClick(todo.id)}>X</button>
+          <button className="del-button" onClick={() => handleClick(todo.id)}>X</button>
         </div>
       ))}
     </>
