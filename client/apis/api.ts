@@ -12,7 +12,7 @@ export function addTodo(todo: TodoDraft) {
   return request.post(url).send(todo)
 }
 
-//DELETE TODO BY ID
+//DELETE TODO BY ID :)
 export async function deleteTodo(id: number) {
   return await request.delete(`${url}/${id}`)
 }
