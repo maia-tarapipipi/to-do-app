@@ -1,7 +1,6 @@
-import { FormEvent, useState } from 'react'
-import { addTodo } from '../apis/api'
+import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
-import { fetchTodos, postTodoThenFetch } from '../slices/todos'
+import { postTodoThenFetch } from '../slices/todos'
 
 const initialState = {
   taskDetails: '',
@@ -14,7 +13,7 @@ function AddTodo() {
 
   const dispatch = useAppDispatch()
 
-  //TODO: create handleChange function to change state with a new input
+  //CHANGE STATE WITH A NEW INPUT
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setNewTodo({
       ...newTodo,
@@ -22,10 +21,13 @@ function AddTodo() {
     })
   }
 
-  //TODO: create handleSubmit function to dispatch addTodo function from API
+  //DISPATCH POSTTODOTHENFETCH FUNCTION FROM API
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     dispatch(postTodoThenFetch(newTodo))
+
+    //CLEAR THE INPUT AREA AFTER POSING A NEW TODO
+    e.currentTarget.reset()
   }
 
   return (
