@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
+    "dependencies": "^0.0.1",
     "express": "^4.17.2",
     "knex": "^2.4.2",
     "mysql": "^2.18.1",
