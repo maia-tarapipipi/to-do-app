@@ -13,7 +13,7 @@ server.use('/api/v1/todos', todos)
 if (process.env.NODE_ENV === 'production') {
   server.use('/assets', express.static(path.resolve(__dirname, '../assets')))
   server.get('*', (req, res) => {
-    res.sendFile(path.join('public', 'index.html'))
+    res.sendFile(path.join(__dirname, '../index.html'))
   })
 }
 
