@@ -7,9 +7,10 @@ function App() {
       <header className="header">
         <h1>todos</h1>
         <AddTodo />
-        <List />
       </header>
-      <section className="main"></section>
+      <section className="main">
+        <List />
+      </section>
       <footer className="footer"></footer>
     </>
   )
