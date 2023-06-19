@@ -13,6 +13,6 @@ export function addTodo(todo: TodoDraft) {
 }
 
 //DELETE TODO BY ID
-export function deleteTodo (id: number) {
-  return request.delete(id)
+export async function deleteTodo(id: number) {
+  return await request.delete(`${url}/${id}`)
 }

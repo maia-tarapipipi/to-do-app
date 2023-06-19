@@ -5,15 +5,14 @@ import { Todo, TodoDraft } from '../../common/todo'
 const router = express.Router()
 
 //TODO: add get route
-router.get('/', async(req, res) => {
- try {
-  const todos = await db.getTodos()
-  res.status(200)
-  res.json(todos)
-
- } catch (error) {
-  console.error('Server: something went wrong getting data.')
- }
+router.get('/', async (req, res) => {
+  try {
+    const todos = await db.getTodos()
+    res.status(200)
+    res.json(todos)
+  } catch (error) {
+    console.error('Server: something went wrong getting data.')
+  }
 })
 
 //TODO: add post route
@@ -33,13 +32,14 @@ router.post('/', (req, res) => {
 })
 
 //DELETE A TODO BY ID
-router.delete('/', async(req, res) => {
-  const id = Number (req.body.id)
-  try{
+router.delete('/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id)
+    console.log(id)
     await db.deleteTodos(id)
     res.status(200)
-  }catch (error) {
-    console.error(error)
+  } catch (error) {
+    console.error('Server: something went wrong deleting data.')
   }
 })
 export default router
