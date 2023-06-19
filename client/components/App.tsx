@@ -1,16 +1,22 @@
-import AddTodo from './AddTodo'
+import { useState } from 'react';
+import AddTodo from './AddTodo';
+import List from './List';
 
 function App() {
+  const [isListVisible, setListVisible] = useState(false);
+
+  function handleEnterPressed() {
+    setListVisible(true);
+  }
+
   return (
     <>
-      <header className="header">
-        <h1>todos</h1>
-        <AddTodo />
+      <header>
+        <AddTodo onEnterPressed={handleEnterPressed} />
+        {isListVisible && <List />}
       </header>
-      <section className="main"></section>
-      <footer className="footer"></footer>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
