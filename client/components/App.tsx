@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <main className="main">
-        <h1>Trotter's Todos</h1>
+        <h1>Trotter&apos;s Todos</h1>
         <AddTodo />
         <ToDoList />
       </main>

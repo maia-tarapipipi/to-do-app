@@ -1,21 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '../store'
-import { deleteTask, addTask, getTasks } from '../apis/api'
+import { deleteTask, addTask, getTasks, editTask, taskDone } from '../apis/api'
 import { TaskDraft, Task } from '../models/models'
 
 export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
-  console.log('fetchTasks log');
-  
+ 
   return await getTasks()
 })
 
 export const postTaskThenFetch = createAsyncThunk(
   'tasks/postTaskThenFetch',
   async (task: TaskDraft) => {
-    console.log(`Testing slice thunk`, task);
-    
     await addTask(task)
+    return await getTasks()
+  }
+)
+
+export const setCompleted = createAsyncThunk(
+  'tasks/setCompleted',
+  async (id: number) => {
+    await taskDone(id)
     return await getTasks()
   }
 )
@@ -24,6 +27,14 @@ export const removeTask = createAsyncThunk(
   'tasks/deleteTask',
   async (id: number) => {
     await deleteTask(id)
+    return await getTasks()
+  }
+)
+
+export const updateTask = createAsyncThunk(
+  'tasks/updateTask',
+  async (task: Task) => {
+    await editTask(task)
     return await getTasks()
   }
 )
@@ -37,6 +48,8 @@ export const taskSlice = createSlice({
       .addCase(fetchTasks.fulfilled, (_, { payload }) => payload)
       .addCase(postTaskThenFetch.fulfilled, (_, { payload }) => payload)
       .addCase(removeTask.fulfilled, (_, {payload}) => payload)
+      .addCase(updateTask.fulfilled, (_, {payload}) => payload)
+      .addCase(setCompleted.fulfilled, (_, {payload}) => payload)
   },
 })
 

@@ -1,4 +1,3 @@
-import { log } from 'console'
 import connection from './connection'
 
 interface TodoDraft {
@@ -13,24 +12,29 @@ interface Todo extends TodoDraft {
 
 //GET todos
 export function getTasks(db = connection) {
-  return db('todos').select().orderBy('completed', 'desc') as Todo
+  return db('todos').select().orderBy('completed', 'desc') as Todo[]
+}
+
+//GET todo by id
+export function getTaskById(id:number, db = connection) {
+  return db('todos').where('id', id).select().first() as Todo
 }
 
 //POST add todo
 export async function addTodo(todo: TodoDraft, db = connection) {
-  const [id] = await db('todos').insert(todo)
-  return console.log(id)
+  return await db('todos').insert(todo)
+  
 }
 
 //UPDATE todo
 export async function editTodo({task, completed, priority, id}: Todo, db = connection) {
-    const dbId = await db('todos').where('id', id).update({task, priority, completed})    
-    return console.log(dbId);
+    return await db('todos').where('id', id).update({id, task, priority, completed})    
+   
     
 }
 
 //DELETE todo
 export async function deleteTodo(id:number, db = connection) {
-  console.log('DB: delete');
+
   return await db('todos').where('id', id).del()
 }

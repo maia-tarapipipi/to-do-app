@@ -1,4 +1,5 @@
-import { FormEvent, useState } from 'react'
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { useState } from 'react'
 import { postTaskThenFetch } from '../slices/todos'
 import { useAppDispatch } from '../hooks'
 
@@ -14,31 +15,29 @@ function AddTodo() {
 
     if (e.target.id === 'task') {
       setTask({ ...task, task: value })
-      console.log(task)
+
     } else if (e.target.id === 'priority') {
       setTask({ ...task, priority: value })
-      console.log(task)
     }
   }
 
-  function handleKeyPress(e: React.KeyboardEvent<HTMLFormElement>) {
-   if (e.key === 'Enter') {
-     e.preventDefault()   
-     dispatch(postTaskThenFetch({...task, priority: Number(task.priority)}))
+ 
+  function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    dispatch(postTaskThenFetch({...task, priority: Number(task.priority)}))
      setTask(initialState)
-   }
   }
 
   return (
     <>
-      <form onKeyDown={handleKeyPress} className="form">
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
           onChange={handleChange}
           className="new-todo"
           id="task"
           placeholder="Add a task"
-          autoFocus={true}
+          
           value={task.task}
         />
         <input
@@ -49,9 +48,11 @@ function AddTodo() {
           placeholder="Priority: 0-10"
           value={task.priority}
         />
+        <button >Submit</button>
       </form>
     </>
   )
 }
 
 export default AddTodo
+

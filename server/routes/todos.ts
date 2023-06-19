@@ -18,6 +18,18 @@ router.get('/', async (req, res) => {
   }
 })
 
+//GET todo
+router.get('/:id',async (req, res) => {
+  try {
+    res.json(await db.getTaskById(Number(req.params.id)))
+    res.sendStatus(200)
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Server: Oops, something went wrong getting a data')
+    }
+  }
+})
+
 //POST add todo
 router.post('/', async (req, res) => {
   try {
@@ -31,8 +43,10 @@ router.post('/', async (req, res) => {
 })
 
 //UPDATE edit todo
-router.put('/',async (req, res) => {
+router.put('/:id',async (req, res) => {
   try {
+
+    
     await db.editTodo({priority: 0, ...req.body})
     res.sendStatus(200)
   } catch (error) {
@@ -45,7 +59,7 @@ router.put('/',async (req, res) => {
 //DELETE todo
 router.delete('/:id',async (req, res) => {
   try {
-    console.log('ROUTE: delete');
+
     await db.deleteTodo(Number(req.params.id))
     res.sendStatus(200)
   } catch (error) {

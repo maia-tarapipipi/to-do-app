@@ -14,7 +14,7 @@ export async function addTask(task:TaskDraft) {
 }
 
 export async function deleteTask(id:number) {
-  console.log('API: delete');
+  
   await request.delete(`${url}/${id}`)
 }
 
@@ -22,3 +22,8 @@ export async function editTask(task:Task) {
   await request.put(`${url}/${task.id}`).send(task)
 }
 
+export async function taskDone(id:number) {  
+  const res = await request.get(`${url}/${id}`)
+  const task = res.body
+  await editTask({...task, completed: true})
+}
