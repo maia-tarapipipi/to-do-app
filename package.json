@@ -1,5 +1,5 @@
 {
-  "name": "todo-full-stack",
+  "name": "sarahtodofullstack",
   "version": "0.1.0",
   "description": "Todo Full Stack",
   "repository": "https://https://github.com/dev-academy-challenges/todo-full-stack",
@@ -65,6 +65,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
+    "dotenv": "^16.3.1",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2",
