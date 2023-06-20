@@ -30,21 +30,23 @@ function AddTodo({ onEnterPressed }: AddTodoProps) {
 
   return (
     <>
-      <div className="has-text-centered">
-        <h1 className="is-size-1 has-text-weight-bold has-text-danger">
-          TODOS
-        </h1>
-      </div>
+      {/* Heading Level 1 */}
+      <h1 className="has-text-centered is-size-1 has-text-weight-bold has-text-danger">
+        TODOS
+      </h1>
 
       <div className="container has-text-centered">
         <div className="column is-half is-offset-one-quarter">
           <div className="control">
             <form onSubmit={handleSubmit}>
+              {/* Form Label */}
               <div>
                 <label className="label" htmlFor="todo-input">
-                  What do you need to do?
+                  Task:
                 </label>
               </div>
+
+              {/* Input field */}
               <input
                 className="input"
                 type="text"
@@ -55,7 +57,7 @@ function AddTodo({ onEnterPressed }: AddTodoProps) {
                 onChange={handleChange}
               />
 
-              {/* Add 'onKeyDown' event listener for keyboard access */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 onKeyDown={(event) => {
