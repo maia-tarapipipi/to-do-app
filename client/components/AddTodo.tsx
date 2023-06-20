@@ -57,15 +57,17 @@ function AddTodo({ onEnterPressed }: AddTodoProps) {
                 onChange={handleChange}
               />
 
-              {/* Submit Button */}
+              {/* Submit Button with styling */}
               <button
                 type="submit"
+                className="button is-primary"
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
                     event.preventDefault()
                     handleSubmit(event)
                   }
                 }}
+                style={{ margin: '40px', padding: '10px 20px' }}
               >
                 Submit
               </button>
