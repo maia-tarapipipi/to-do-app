@@ -54,6 +54,19 @@ function AddTodo({ onEnterPressed }: AddTodoProps) {
                 value={todosList.todo}
                 onChange={handleChange}
               />
+
+              {/* Add 'onKeyDown' event listener for keyboard access */}
+              <button
+                type="submit"
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    event.preventDefault()
+                    handleSubmit(event)
+                  }
+                }}
+              >
+                Submit
+              </button>
             </form>
           </div>
         </div>
