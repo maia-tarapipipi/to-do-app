@@ -1,12 +1,17 @@
 
 exports.up = function(knex) {
-  return knex.schema.createTable('toDoList', function(table) {
+  return knex.schema.createTable('Todos', function(table) {
     table.increments('id');
-    table.string('task').notNullable();
-    table.boolean('completed').notNullable();
+    table.string('todo').notNullable();
+    table.boolean('completed').notNullable().defaultTo(false);
     table.timestamps(false, true);
   });
 };
+
+// {
+//   task: 'string',
+//   completed: true
+// }
 
 exports.down = function(knex) {
   return knex.schema.dropTable('Todos')

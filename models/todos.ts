@@ -1,6 +1,6 @@
 //frontend
 export interface TodoDraft {
-  todo: string
+  todo: string,
 }
 
 //backend

@@ -24,6 +24,7 @@ function AddTodo({ onEnterPressed }: AddTodoProps) {
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
     dispatch(postTodosThenFetch(todosList))
+    console.log('HERE')
     onEnterPressed()
   }
 

@@ -3,20 +3,23 @@ const router = express.Router()
 
 import db = require('../db/db')
 
+
+
 router.get('/', (req, res) => {
-  res.send('Hello World!')
-  // db.getTodos()
-  //   .then((todos) => {
-  //     res.json(todos)
-  //   })
-  //   .catch((err) => {
-  //     console.error(err)
-  //     res.status(500).json({ message: 'error in server' })
-  //   })
+  db.getTodos()
+    .then((todos) => {
+      res.json(todos)
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).json({ message: 'error in server' })
+    })
 })
 
 router.post('/', (req, res) => {
-  const { todo } = req.body
+  const todo = req.body
+  todo.completed = todo.completed || false
+  
 
   db.addTodos({ todo })
     .then(() => {

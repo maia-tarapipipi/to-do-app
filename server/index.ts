@@ -4,9 +4,8 @@ import routes from './routes/todos'
 
 const app = express()
 
-app.use('/api',routes)
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 
 server.listen(PORT, () => {
   console.log('Listening on port', PORT);
