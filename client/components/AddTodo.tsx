@@ -1,10 +1,11 @@
 import React, { FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks'
+import { postTodoThenFetch } from '../slices/todos'
 
 function AddTodo() {
   const dispatch = useAppDispatch()
   const [form, setForm] = useState({
-    listItemName: '',
+    details: '',
   })
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -15,22 +16,22 @@ function AddTodo() {
   }
 
   function handleSubmit(event: FormEvent) {
-    console.log('handleSubmit')
     event.preventDefault()
-    dispatch(postFilmThenFetch(form))
+    dispatch(postTodoThenFetch(form))
   }
 
   return (
     <>
-      <input
-        className="new-todo"
-        placeholder="What needs to be done?"
-        autoFocus={true}
-        name="listItemName"
-        value={form.listItemName}
-        onChange={handleChange}
-        onClick={handleSubmit}
-      />
+      <form id="form" noValidate onSubmit={handleSubmit}>
+        <input
+          className="new-todo"
+          placeholder="What needs to be done?"
+          autoFocus={true}
+          name="details"
+          value={form.details}
+          onChange={handleChange}
+        />
+      </form>
     </>
   )
 }
