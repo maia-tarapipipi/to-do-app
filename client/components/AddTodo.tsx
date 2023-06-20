@@ -6,6 +6,8 @@ function AddTodo() {
   const dispatch = useAppDispatch()
   const [form, setForm] = useState({
     details: '',
+    priority: 1,
+    completed: false,
   })
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
