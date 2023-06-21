@@ -3,7 +3,7 @@ import AddTodo from './AddTodo';
 import List from './List';
 
 function App() {
-  const [isListVisible, setListVisible] = useState(false);
+  const [isListVisible, setListVisible] = useState(true);//set to false when done testing ************
 
   function handleEnterPressed() {
     setListVisible(true);

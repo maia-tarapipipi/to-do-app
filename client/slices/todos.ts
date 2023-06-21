@@ -3,6 +3,7 @@ import {
   addTodos,
   deleteTodos,
   getTodos,
+  updateTodos
 } from '../apis/api'
 import { Todo, TodoDraft } from '../../models/todos'
 
@@ -23,6 +24,13 @@ export const deleteTodoThenFetch = createAsyncThunk(
   async (id: number) => {
     await deleteTodos(id)
     return await getTodos()
+  }
+)
+export const updateTodo = createAsyncThunk(
+  'todos/postTodosThenFetch',
+  async ({id, completed} : {id: number, completed: boolean}) => {
+    console.log(id,completed,'todos.ts')
+    await updateTodos(id, completed)
   }
 )
 const todosSlice = createSlice({

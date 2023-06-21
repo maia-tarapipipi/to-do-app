@@ -17,4 +17,13 @@ export function deleteTodos(id: number) {
   return request.delete(`${url}${id}`);
 }
 
+export function updateTodos(id: number, completed: boolean){
+  console.log(id, completed, 'api.ts')
+  return request.put(`${url}${id}`).send({completed})
+}
+
+// export function updateTodos(completed: boolean){
+//   return request.
+// }
+
 

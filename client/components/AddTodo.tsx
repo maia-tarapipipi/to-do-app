@@ -60,7 +60,7 @@ function AddTodo({ onEnterPressed }: AddTodoProps) {
               {/* Submit Button with styling */}
               <button
                 type="submit"
-                className="button is-primary"
+                className="button is-dark"
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
                     event.preventDefault()

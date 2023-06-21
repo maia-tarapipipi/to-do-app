@@ -15,5 +15,10 @@ export function deleteTodos(id: number, db = connection) {
   return db('Todos').where({ 'id': id }).delete()
 }
 
+export function updateTodos(id: number, completed: boolean, db = connection){
+  console.log(completed, 'db.ts')
+  return db('Todos').where({'id': id}).update({completed: completed})
+}
+
 
 

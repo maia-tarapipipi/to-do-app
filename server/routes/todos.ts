@@ -46,5 +46,20 @@ router.delete('/:id', async (req, res) => {
     })
 })
 
+router.put('/:id', async (req, res) => {
+  const id = req.params.id
+  const completed = req.body.completed
+  console.log(req.body, 'LINE 52')
+ 
+  db.updateTodos(Number(id), completed)
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch((err: Error) => {
+      console.error(err)
+      res.status(500).json({ message: 'error in server' })
+    })
+})
+
 
 export default router
