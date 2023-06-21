@@ -16,7 +16,7 @@ function List() {
         <li key={todo.id}>
           <div className="view">
             <input className="toggle" type="checkbox" checked="" />
-            <label>Taste JavaScript</label>
+            <label>{todo.details}</label>
             <button className="destroy"></button>
           </div>
         </li>
