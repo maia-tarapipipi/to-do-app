@@ -1,14 +1,20 @@
+import { useState } from 'react'
 import AddTodo from './AddTodo'
+import ToDoList from './ToDoList'
 
 function App() {
+  const [isListVisible, setListVisible] = useState(false)
+
+  function handleEnterPressed() {
+    setListVisible(true)
+  }
+
   return (
     <>
-      <header className="header">
-        <h1>todos</h1>
-        <AddTodo />
+      <header>
+        <AddTodo onEnterPressed={handleEnterPressed} />
+        {isListVisible && <ToDoList />}
       </header>
-      <section className="main"></section>
-      <footer className="footer"></footer>
     </>
   )
 }
