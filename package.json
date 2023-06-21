@@ -20,7 +20,7 @@
   "keywords": [
     "fullstack"
   ],
-  "author": "Carlos Aguilar",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
