@@ -5,17 +5,15 @@ import ToDoList from './ToDoList'
 function App() {
   const [isListVisible, setListVisible] = useState(false)
 
-  function handleEnterPressed() {
+  const showTodoList = () => {
     setListVisible(true)
   }
 
   return (
-    <>
-      <header>
-        <AddTodo onEnterPressed={handleEnterPressed} />
-        {isListVisible && <ToDoList />}
-      </header>
-    </>
+    <header>
+      <AddTodo onEnterPressed={showTodoList} />
+      {isListVisible && <ToDoList />}
+    </header>
   )
 }
 
