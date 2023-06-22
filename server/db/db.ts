@@ -6,8 +6,7 @@ export async function getTodos(db = connection) {
 }
 
 export function addTodos(task: TodoDraft, db = connection) {
-  const todo = task.todo
-  return db('Todos').insert(todo)
+  return db('Todos').insert(task)
 }
 
 export function deleteTodos(id: number, db = connection) {

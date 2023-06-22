@@ -5,8 +5,8 @@ import db = require('../db/db')
 
 router.get('/', (req, res) => {
   db.getTodos()
-    .then((task) => {
-      res.json(task)
+    .then((todos) => {
+      res.json(todos)
     })
     .catch((err) => {
       console.error(err)
@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
   const todo = req.body
   todo.completed = todo.completed || false
 
-  db.addTodos({ todo })
+  db.addTodos({task: todo.task, priority: todo.priority})
     .then(() => {
       res.sendStatus(201)
       return null

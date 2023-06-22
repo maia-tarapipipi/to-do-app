@@ -17,7 +17,7 @@ const Form = ({ onEnterPressed }: AddTodoProps) => {
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
     if (todo !== '') {
-      dispatch(postTodosThenFetch({ todo }))
+      dispatch(postTodosThenFetch({ task: todo }))
       setTodo('')
       onEnterPressed()
     }

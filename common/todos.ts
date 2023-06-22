@@ -1,10 +1,11 @@
 export interface TodoDraft {
-  todo: string
+  task: string
+  priority?: string
 }
 
 export interface Todo extends TodoDraft {
   id: number
-  todo: string
+  task: string
   priority: string
   completed: boolean
 }
