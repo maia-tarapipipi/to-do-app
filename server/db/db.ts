@@ -9,7 +9,7 @@ export function addTasks(taskData: TaskDraft, db = connection) {
   return db('tasks').insert(taskData)
 }
 
-export function updateTask(id: number, taskData: Task, db = connection) {
+export function updateTask(id: number, taskData: TaskDraft, db = connection) {
   return db('tasks').where('id', id).update(taskData)
 }
 

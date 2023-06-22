@@ -26,7 +26,11 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    const taskData = req.body
+    const taskData = {
+      details: req.body.details,
+      priority: req.body.priority,
+      completed: req.body.completed,
+    }
     const id = Number(req.params.id)
     console.log(id, taskData)
     await db.updateTask(id, taskData)

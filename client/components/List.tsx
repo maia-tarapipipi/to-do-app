@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchTodos } from '../slices/todos'
 import { deleteTodoThenFetch } from '../slices/todos'
-import { Task } from '../../common/task'
+import { updateTodoThenFetch } from '../slices/todos'
+import { Task, TaskDraft } from '../../common/task'
 
 function List() {
   const dispatch = useAppDispatch()
@@ -17,6 +18,12 @@ function List() {
   }
 
   function handleUpdate(todo: Task) {
+    todo = {
+      id: todo.id,
+      details: todo.details,
+      priority: todo.priority,
+      completed: todo.completed,
+    }
     dispatch(updateTodoThenFetch(todo))
   }
 

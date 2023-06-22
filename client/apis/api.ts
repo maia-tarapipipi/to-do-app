@@ -16,3 +16,7 @@ export function addTodo(task: TaskDraft) {
 export function deleteTodo(id: number) {
   return request.delete(`${url}/${id}`)
 }
+
+export function updateTodo(id: number, task: TaskDraft) {
+  return request.patch(`${url}/${id}`).send(task)
+}
