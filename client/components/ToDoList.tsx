@@ -2,20 +2,20 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchTodos, deleteTodoThenFetch } from '../slices/todos'
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ task }) => {
   const dispatch = useAppDispatch()
 
   return (
-    <div className="block" key={todo.id}>
+    <div className="block" key={task.id}>
       <p
         className="block"
         style={{ display: 'inline-block', marginRight: '10px' }}
       >
-        {todo.todo}
+        {task.task}
       </p>
       <button
         className="delete is-medium"
-        onClick={() => dispatch(deleteTodoThenFetch(todo.id))}
+        onClick={() => dispatch(deleteTodoThenFetch(task.id))}
         style={{ display: 'inline-block' }}
       >
         x
@@ -36,8 +36,8 @@ function ToDoList() {
     <div className="container has-text-centered ">
       <div className="columns is-centered">
         <div className="column is-two-fifths notification is-warning">
-          {todos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} />
+          {todos.map((task) => (
+            <TodoItem key={task.id} task={task} />
           ))}
         </div>
       </div>

@@ -5,8 +5,8 @@ import db = require('../db/db')
 
 router.get('/', (req, res) => {
   db.getTodos()
-    .then((todos) => {
-      res.json(todos)
+    .then((task) => {
+      res.json(task)
     })
     .catch((err) => {
       console.error(err)
