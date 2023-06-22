@@ -8,11 +8,6 @@ exports.up = function(knex) {
   });
 };
 
-// {
-//   task: 'string',
-//   completed: true
-// }
-
 exports.down = function(knex) {
   return knex.schema.dropTable('Todos')
   
