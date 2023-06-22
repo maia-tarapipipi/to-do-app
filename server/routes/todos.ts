@@ -3,8 +3,6 @@ const router = express.Router()
 
 import db = require('../db/db')
 
-
-
 router.get('/', (req, res) => {
   db.getTodos()
     .then((todos) => {
