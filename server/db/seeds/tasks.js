@@ -8,25 +8,25 @@ exports.seed = async function (knex) {
   await knex('tasks').insert([
     {
       id: 1,
-      details: 'Washing',
+      details: 'Feed the sheep',
       priority: 1,
       completed: false,
     },
     {
       id: 2,
-      details: 'Dishes',
+      details: 'Clean the rabbit hutch',
       priority: 2,
       completed: false,
     },
     {
       id: 3,
-      details: 'Mow Lawns',
+      details: 'Mow the lawn',
       priority: 3,
       completed: false,
     },
     {
       id: 4,
-      details: 'Vaccum',
+      details: 'Run the robot vaccum',
       priority: 4,
       completed: false,
     },

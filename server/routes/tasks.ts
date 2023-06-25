@@ -13,6 +13,15 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  try {
+    res.json(await db.getTaskById(Number(req.params.id)))
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'error getting single task in server' })
+  }
+})
+
 router.post('/', async (req, res) => {
   try {
     const taskData = req.body
@@ -29,10 +38,9 @@ router.patch('/:id', async (req, res) => {
     const taskData = {
       details: req.body.details,
       priority: req.body.priority,
-      completed: req.body.completed,
+      completed: !req.body.completed,
     }
     const id = Number(req.params.id)
-    console.log(id, taskData)
     await db.updateTask(id, taskData)
     res.sendStatus(200)
   } catch (error) {

@@ -17,6 +17,9 @@ export function deleteTodo(id: number) {
   return request.delete(`${url}/${id}`)
 }
 
-export function updateTodo(id: number, task: TaskDraft) {
-  return request.patch(`${url}/${id}`).send(task)
+export async function updateTodo(id: number) {
+  const res = await request.get(`${url}/${id}`)
+  const task = res.body
+  console.log('Update todo:', task)
+  await request.patch(`${url}/${id}`).send(task)
 }

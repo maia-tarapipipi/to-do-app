@@ -1,14 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchTodos } from '../slices/todos'
 import { deleteTodoThenFetch } from '../slices/todos'
 import { updateTodoThenFetch } from '../slices/todos'
-import { Task, TaskDraft } from '../../common/task'
 
 function List() {
   const dispatch = useAppDispatch()
   const todos = useAppSelector((state) => state.todos)
-  const [isChecked, setIsChecked] = useState(false)
 
   useEffect(() => {
     dispatch(fetchTodos())
@@ -18,34 +16,20 @@ function List() {
     dispatch(deleteTodoThenFetch(id))
   }
 
-  function handleCheckboxChange(todo: Task) {
-    todo = {
-      id: todo.id,
-      details: todo.details,
-      priority: todo.priority,
-      completed: todo.completed,
-    }
-    if (!isChecked) {
-      console.log(isChecked)
-      setIsChecked(!isChecked)
-    } else {
-      setIsChecked(isChecked)
-    }
-    dispatch(updateTodoThenFetch(todo))
+  function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
+    dispatch(updateTodoThenFetch(Number(event.target.id)))
   }
 
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
-        <li key={todo.id}>
+        <li key={todo.id} className={todo.completed ? 'completed' : ''}>
           <div className="view">
             <input
+              id={`${todo.id}`}
               className="toggle"
               type="checkbox"
-              checked={isChecked}
-              onChange={() => {
-                handleCheckboxChange(todo)
-              }}
+              onChange={handleCheckboxChange}
             />
             <label>{todo.details}</label>
             <button

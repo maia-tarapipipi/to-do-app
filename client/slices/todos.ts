@@ -24,10 +24,8 @@ export const deleteTodoThenFetch = createAsyncThunk(
 
 export const updateTodoThenFetch = createAsyncThunk(
   'todos/updateTodo',
-  async (todo: Task) => {
-    console.log('updateTodoThenFetch')
-    const id = todo.id
-    await updateTodo(id, todo)
+  async (id: number) => {
+    await updateTodo(id)
     return await getTodos()
   }
 )
