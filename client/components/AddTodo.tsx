@@ -44,7 +44,9 @@ function AddTodo() {
           value={form.priority}
         />
         <div className="new-todo">
-          <button type="submit">Submit</button>
+          <button type="submit" onSubmit={handleSubmit}>
+            Submit
+          </button>
         </div>
       </form>
     </>
